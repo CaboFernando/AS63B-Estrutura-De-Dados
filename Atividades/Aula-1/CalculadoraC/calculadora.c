@@ -39,14 +39,6 @@ void limparTela() {
     system("cls");
 }
 
-// void validaInput(char mensagem, float valor) {
-//     while (scanf("%f", &valor) != 1) {
-//         printf("Entrada invalida.\n");
-//         printf("Digite o \"%c\" número: ");
-//     while (getchar() != '\n');
-//     }
-// }
-
 int main() {
     int opcao;
     float num1, num2, resultado;
@@ -63,7 +55,6 @@ int main() {
         
         if(opcao >= 1 && opcao <= 4) {
             printf("Digite o primeiro numero: ");
-            //scanf("%f", &num1);
             while (scanf("%f", &num1) != 1) {
                 printf("Entrada invalida.\n");
                 printf("Digite o primeiro numero: ");
@@ -71,7 +62,6 @@ int main() {
             }
 
             printf("Digite o segundo numero: ");
-            //scanf("%f", &num2);
             while (scanf("%f", &num2) != 1) {
                 printf("Entrada invalida.\n");
                 printf("Digite o segundo numero: ");            
