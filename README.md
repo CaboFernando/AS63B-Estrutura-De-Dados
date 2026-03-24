@@ -1,6 +1,39 @@
-# AS63B-Estrutura-De-Dados
-Repositório destinado a ser usado na aula de Estrutura de Dados do curdo de Tecnologia em Análise e Desenvolvimento de Sistemas - Professor Clayton Kossoski
+# 📘 AS63B - Estrutura de Dados
 
-### Aula 0 - Apresentação do Professor
-### Aula 1 - Apresentação dos alunos e atividade do dia: criar um calculadora em c ou c++ sem IA.
-### Aula 2 - Revisão de c: https://docs.google.com/presentation/d/1_y_jmlg93St54tifcC_ksyIYA0NdKcLYIzF0wI-0p5o/edit?slide=id.g3cf9bdd83b0_0_51&pli=1#slide=id.g3cf9bdd83b0_0_51
+Repositório utilizado na disciplina de **Estrutura de Dados**, do curso de **Tecnologia em Análise e Desenvolvimento de Sistemas (TADS)**.
+
+👨‍🏫 **Professor:** Clayton Kossoski
+
+---
+
+## 📚 Sobre o Repositório
+
+Este repositório tem como objetivo armazenar materiais, atividades e conteúdos desenvolvidos ao longo das aulas, servindo como apoio para o aprendizado prático da disciplina.
+
+---
+
+## 🗂️ Conteúdo das Aulas
+
+| Aula | Descrição |
+| ---- | ---------------------------------------------------------------------------------------- |
+| 0    | Apresentação do professor e da disciplina |
+| 1    | Apresentação dos alunos e desenvolvimento de uma calculadora em C ou C++ (sem uso de IA) |
+| 2    | Revisão da linguagem C e pesquisa sobre como utilizar debugger no VS Code |
+| 3    | Uso de debugger em aula e introdução à Gerência de Configuração de Software |
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* C
+* C++
+* Visual Studio Code
+
+---
+
+## 📌 Observações
+
+* As atividades devem ser desenvolvidas conforme orientação em aula.
+* O uso de inteligência artificial pode ser restrito dependendo da atividade proposta.
+
+---
