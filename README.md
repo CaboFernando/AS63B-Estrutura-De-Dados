@@ -20,6 +20,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 1    | Apresentação dos alunos e desenvolvimento de uma calculadora em C ou C++ (sem uso de IA) |
 | 2    | Revisão da linguagem C e pesquisa sobre como utilizar debugger no VS Code |
 | 3    | Uso de debugger em aula e introdução à Gerência de Configuração de Software |
+| 4    | Recursividade em estrutura de dados |
 
 ---
 
