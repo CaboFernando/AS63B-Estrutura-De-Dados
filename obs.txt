@@ -1,0 +1,5 @@
+Configuração do VS code: https://vscode.dev/profile/github/2bb920536b9ad64ab3b25cba4c93dad4
+
+Realizar atividades de recusão criando algoritmos de:
+- torre de hanoi
+- permutações
