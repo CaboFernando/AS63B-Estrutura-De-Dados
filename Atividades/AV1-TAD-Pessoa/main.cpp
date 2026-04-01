@@ -2,7 +2,7 @@
 #include "pessoa.cpp"
 using namespace std;
 
-void criarPessoa()
+Pessoa* criarPessoa()
 {
     string nome, endereco;
     int idade;
@@ -14,7 +14,7 @@ void criarPessoa()
     cout << "Digite o endereco da pessoa: ";
     cin >> endereco;
 
-    Pessoa* p = _pessoa_cria(nome, idade, endereco);
+    return _pessoa_cria(nome, idade, endereco); // Chama a função _pessoa_cria para criar uma nova Pessoa e retorna o ponteiro para ela
 }
 
 void visualizarPessoa(Pessoa* p)
@@ -44,14 +44,18 @@ void alterarPessoa(Pessoa* p)
     _pessoa_atribui(p, nome, idade, endereco);
 }
 
-void removerPessoa(Pessoa* p)
+void removerPessoa(Pessoa** p)
 {
-    _pessoa_libera(p);
+    if(*p != nullptr) {
+        _pessoa_libera(*p);
+        *p = nullptr;
+    }
 }
 
 void menu()
 {
     int opcao;
+    Pessoa* p = nullptr;
 
     do{
         cout << "========== MENU ==========" << endl;
@@ -62,6 +66,18 @@ void menu()
         cout << "0. Sair" << endl;
         cout << "Escolha uma opcao: ";        
         cin >> opcao;
+
+        switch(opcao)
+        {
+            case 1: 
+                if(p) cout << "Pessoa ja criada. Remova-a primeiro." << endl; 
+                else p = criarPessoa(); break;
+            case 2: visualizarPessoa(p); break;
+            case 3: alterarPessoa(p); break;
+            case 4: removerPessoa(&p); break;
+            case 0: cout << "Saindo..." << endl; break;
+            default: cout << "Opcao invalida. Tente novamente." << endl;
+        }
 
     } while(opcao != 0);
 
