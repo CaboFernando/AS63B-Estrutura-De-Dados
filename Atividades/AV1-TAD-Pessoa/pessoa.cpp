@@ -29,3 +29,13 @@ void _pessoa_acessa(Pessoa* p, string* nome, int* idade, string* endereco)
     if(idade) *idade = p->idade; 
     if(endereco) *endereco = p->endereco; 
 }
+
+void _pessoa_atribui(Pessoa* p, string nome, int idade, string endereco)
+{
+    if(p == nullptr) return; // Verifica se o ponteiro é nulo antes de acessar os campos
+
+    // Atribui os novos valores aos campos da estrutura
+    p->nome = nome;
+    p->idade = idade;
+    p->endereco = endereco;
+}
