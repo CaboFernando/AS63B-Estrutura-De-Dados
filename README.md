@@ -2,7 +2,8 @@
 
 Repositório utilizado na disciplina de **Estrutura de Dados**, do curso de **Tecnologia em Análise e Desenvolvimento de Sistemas (TADS)**.
 
-👨‍🏫 **Professor:** Clayton Kossoski
+👨‍🏫 **Professor:** Clayton Kossoski 
+GitHub: @claytonutf
 
 ---
 
