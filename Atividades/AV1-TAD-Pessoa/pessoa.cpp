@@ -39,3 +39,11 @@ void _pessoa_atribui(Pessoa* p, string nome, int idade, string endereco)
     p->idade = idade;
     p->endereco = endereco;
 }
+
+void _pessoa_libera(Pessoa* p)
+{
+    if(p != nullptr) { // Verifica se o ponteiro é nulo antes de liberar a memória
+        delete p; // Libera a memória alocada para a estrutura usando delete
+        cout << "Memoria da Pessoa liberada" << endl;
+    }
+}
