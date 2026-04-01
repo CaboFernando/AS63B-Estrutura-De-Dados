@@ -19,3 +19,13 @@ Pessoa *_pessoa_cria(string nome, int idade, string endereco)
     // Retorna o ponteiro para a estrutura criada
     return p;
 }
+
+void _pessoa_acessa(Pessoa* p, string* nome, int* idade, string* endereco)
+{
+    if(p == nullptr) return; // Verifica se o ponteiro é nulo antes de acessar os campos
+
+    // Atribui o valor do parâmetro se o ponteiro não for nulo
+    if(nome) *nome = p->nome; 
+    if(idade) *idade = p->idade; 
+    if(endereco) *endereco = p->endereco; 
+}
