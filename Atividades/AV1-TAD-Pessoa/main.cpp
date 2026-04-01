@@ -8,13 +8,17 @@ Pessoa* criarPessoa()
     int idade;
 
     cout << "Digite o nome da pessoa: ";
-    cin >> nome;
+    cin.ignore();
+    getline(cin, nome);
+
     cout << "Digite a idade da pessoa: ";
     cin >> idade;
-    cout << "Digite o endereco da pessoa: ";
-    cin >> endereco;
 
-    return _pessoa_cria(nome, idade, endereco); // Chama a função _pessoa_cria para criar uma nova Pessoa e retorna o ponteiro para ela
+    cout << "Digite o endereco da pessoa: ";
+    cin.ignore();
+    getline(cin, endereco);
+
+    return _pessoa_cria(nome, idade, endereco);
 }
 
 void visualizarPessoa(Pessoa* p)
@@ -35,11 +39,15 @@ void alterarPessoa(Pessoa* p)
     int idade;
 
     cout << "Digite o novo nome da pessoa: ";
-    cin >> nome;
+    cin.ignore();
+    getline(cin, nome);
+
     cout << "Digite a nova idade da pessoa: ";
     cin >> idade;
+
     cout << "Digite o novo endereco da pessoa: ";
-    cin >> endereco;
+    cin.ignore();
+    getline(cin, endereco);
 
     _pessoa_atribui(p, nome, idade, endereco);
 }
@@ -54,7 +62,7 @@ void removerPessoa(Pessoa** p)
 
 void menu()
 {
-    int opcao;
+    char opcao;
     Pessoa* p = nullptr;
 
     do{
@@ -69,24 +77,27 @@ void menu()
 
         switch(opcao)
         {
-            case 1: 
-                if(p) cout << "Pessoa ja criada. Remova-a primeiro." << endl; 
-                else p = criarPessoa(); break;
-            case 2: visualizarPessoa(p); break;
-            case 3: alterarPessoa(p); break;
-            case 4: removerPessoa(&p); break;
-            case 0: cout << "Saindo..." << endl; break;
-            default: cout << "Opcao invalida. Tente novamente." << endl;
+            case '1': if(p) cout << "Pessoa ja criada. Remova-a primeiro.\n" << endl; else p = criarPessoa(); break;
+
+            case '2': if(p) visualizarPessoa(p); else cout << "Nenhuma pessoa listada.\n" << endl; break;
+
+            case '3': if(p) alterarPessoa(p); else cout << "Nenhuma pessoa para ser alterada.\n" << endl; break;
+
+            case '4': if(p) removerPessoa(&p); else cout << "Nenhuma pessoa para ser removida.\n" << endl; break;
+
+            case '0': cout << "Saindo...\n" << endl; break;
+
+            default: cout << "Opcao invalida. Tente novamente.\n" << endl;
         }
 
-    } while(opcao != 0);
+    } while(opcao != '0');
 
+    cout << "==========================" << endl;
 }
 
 int main()
 {
     menu();
-
-    cout << "==========================" << endl;
+    
     return 0;
 }

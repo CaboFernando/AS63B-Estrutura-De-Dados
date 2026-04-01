@@ -16,6 +16,8 @@ Pessoa *_pessoa_cria(string nome, int idade, string endereco)
     p->idade = idade;
     p->endereco = endereco;
 
+    cout << "Pessoa Cadastrada com Sucesso" << endl;
+
     // Retorna o ponteiro para a estrutura criada
     return p;
 }
@@ -28,6 +30,8 @@ void _pessoa_acessa(Pessoa* p, string* nome, int* idade, string* endereco)
     if(nome) *nome = p->nome; 
     if(idade) *idade = p->idade; 
     if(endereco) *endereco = p->endereco; 
+
+    cout << "Detalhe da Pessoa" << endl;
 }
 
 void _pessoa_atribui(Pessoa* p, string nome, int idade, string endereco)
@@ -38,12 +42,14 @@ void _pessoa_atribui(Pessoa* p, string nome, int idade, string endereco)
     p->nome = nome;
     p->idade = idade;
     p->endereco = endereco;
+
+    cout << "Pessoa Alterada com Sucesso" << endl;
 }
 
 void _pessoa_libera(Pessoa* p)
 {
     if(p != nullptr) { // Verifica se o ponteiro é nulo antes de liberar a memória
         delete p; // Libera a memória alocada para a estrutura usando delete
-        cout << "Memoria da Pessoa liberada" << endl;
+        cout << "Pessoa Removida com Sucesso" << endl;
     }
 }
