@@ -21,7 +21,8 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 2    | Revisão da linguagem C e pesquisa sobre como utilizar debugger no VS Code |
 | 3    | Uso de debugger em aula e introdução à Gerência de Configuração de Software |
 | 4    | Recursividade em estrutura de dados |
-| 5    | Revisão do fatorial, fibonacci, contagem regressiva e Tipos abstratos de dados |
+| 5    | Revisão do fatorial, fibonacci, contagem regressiva e Tipos abstratos de dados (TAD) |
+| 6    | Tipos abstratos de dados (TAD) Crud de BoundingBox utilizando strucs em C |
 
 ---
 
