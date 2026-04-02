@@ -11,9 +11,6 @@ struct Pessoa
 typedef struct Pessoa Pessoa;
 
 Pessoa* _pessoa_cria(string nome, int idade, string endereco);
-
 void _pessoa_acessa(Pessoa* p, string* nome, int* idade, string* endereco);
-
 void _pessoa_atribui(Pessoa* p, string nome, int idade, string endereco);
-
 void _pessoa_libera(Pessoa* p);

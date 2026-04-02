@@ -1,16 +1,25 @@
 #include <iostream>
+#include <algorithm>
 #include "pessoa.cpp"
 using namespace std;
 
 // Capacidade maxima do vetor
 const int CAPACIDADE = 10;
 
+// Função auxiliar para converter uma string para minusculo, usada para comparações de nomes
+string toLower(const string& str)
+{
+    string result = str;
+    transform(result.begin(), result.end(), result.begin(), ::tolower);
+    return result;
+}
+
 // Funçao para encontrar o indice de uma pessoa no vetor pelo nome
 int encontrarPessoa(Pessoa* vetor[], int total, string nome)
 {
     for(int i = 0; i < total; i++) 
     {
-        if(vetor[i] != nullptr && vetor[i]->nome == nome)
+        if(vetor[i] != nullptr && toLower(vetor[i]->nome) == toLower(nome))
             return i; // Retorna o indice da pessoa encontrada
     }
     return -1; // Retorna -1 se a pessoa nao for encontrada
@@ -36,7 +45,7 @@ void listarPessoas(Pessoa* vetor[], int total)
 bool criarPessoa(Pessoa* vetor[], int& total)
 {
     if(total >= CAPACIDADE) {
-        cout << "\nCapacidade maxima atingida. Nao é possivel criar mais pessoas.\n" << endl;
+        cout << "\nCapacidade maxima atingida. Nao e possivel criar mais pessoas.\n" << endl;
         return false; // Retorna false se a capacidade maxima for atingida
     }
 
@@ -92,7 +101,7 @@ void visualizarPessoa(Pessoa* vetor[], int total)
         return; // Retorna se a escolha for invalida
     }
 
-    Pessoa* p = vetor[escolha - 1]; // Obtém a pessoa selecionada
+    Pessoa* p = vetor[escolha - 1]; // Obtem a pessoa selecionada
     string nome, endereco;
     int idade;
 
