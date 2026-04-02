@@ -61,8 +61,8 @@ Será disponibilizado o tempo da aula do dia **06/04** para a realização da at
 Compilar com G++:
 
 ```bash
-g++ main.cpp pessoa.cpp -o atividade_pessoa
-./atividade_pessoa
+g++ main.cpp -o main
+./main
 ```
 
 ---
