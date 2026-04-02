@@ -20,7 +20,7 @@ int encontrarPessoa(Pessoa* vetor[], int total, string nome)
 void listarPessoas(Pessoa* vetor[], int total)
 {
     if(total == 0) {
-        cout << "Nenhuma pessoa cadastrada.\n" << endl;
+        cout << "\nNenhuma pessoa cadastrada para ser listada." << endl;
         return;
     }
 
@@ -36,7 +36,7 @@ void listarPessoas(Pessoa* vetor[], int total)
 bool criarPessoa(Pessoa* vetor[], int& total)
 {
     if(total >= CAPACIDADE) {
-        cout << "Capacidade máxima atingida. Não é possível criar mais pessoas.\n" << endl;
+        cout << "\nCapacidade máxima atingida. Não é possível criar mais pessoas.\n" << endl;
         return false; // Retorna false se a capacidade máxima for atingida
     }
 
@@ -49,7 +49,7 @@ bool criarPessoa(Pessoa* vetor[], int& total)
 
     if(encontrarPessoa(vetor, total, nome) != -1)
     {
-        cout << "Pessoa com esse nome já existe. Tente novamente.\n" << endl;
+        cout << "\nPessoa com esse nome já existe. Tente novamente.\n" << endl;
         return false; // Retorna false se a pessoa já existir
     }
 
@@ -65,6 +65,8 @@ bool criarPessoa(Pessoa* vetor[], int& total)
     {
         vetor[total] = novaPessoa; // Adiciona a nova pessoa ao vetor
         total++; // Incrementa o total de pessoas cadastradas
+        cout << "\nPessoa criada com sucesso." << endl;
+
         return true; // Retorna true se a pessoa foi criada com sucesso
     }
 
@@ -75,7 +77,7 @@ bool criarPessoa(Pessoa* vetor[], int& total)
 void visualizarPessoa(Pessoa* vetor[], int total)
 {
     if(total == 0) {
-        cout << "Nenhuma pessoa cadastrada.\n" << endl;
+        cout << "\nNenhuma pessoa cadastrada para ser visualizada." << endl;
         return;
     }
 
@@ -86,7 +88,7 @@ void visualizarPessoa(Pessoa* vetor[], int total)
     cin >> escolha;
 
     if(escolha < 1 || escolha > total || vetor[escolha - 1] == nullptr) {
-        cout << "Número inválido. Tente novamente.\n" << endl;
+        cout << "\nNúmero inválido. Tente novamente.\n" << endl;
         return; // Retorna se a escolha for inválida
     }
 
@@ -107,7 +109,7 @@ void visualizarPessoa(Pessoa* vetor[], int total)
 void alterarPessoa(Pessoa* vetor[], int total)
 {
     if(total == 0) {
-        cout << "Nenhuma pessoa cadastrada.\n" << endl;
+        cout << "\nNenhuma pessoa cadastrada para ser alterada." << endl;
         return;
     }
 
@@ -118,7 +120,7 @@ void alterarPessoa(Pessoa* vetor[], int total)
     cin >> escolha;
 
     if(escolha < 1 || escolha > total || vetor[escolha - 1] == nullptr) {
-        cout << "Número inválido. Tente novamente.\n" << endl;
+        cout << "\nNúmero inválido. Tente novamente.\n" << endl;
         return; // Retorna se a escolha for inválida
     }
 
@@ -144,13 +146,14 @@ void alterarPessoa(Pessoa* vetor[], int total)
     getline(cin, endereco);
 
     _pessoa_atribui(vetor[escolha - 1], nome, idade, endereco);
+    cout << "\nPessoa alterada com sucesso." << endl;
 }
 
 // Função para remover uma pessoa específica do vetor
 void removerPessoa(Pessoa* vetor[], int& total)
 {
     if(total == 0) {
-        cout << "Nenhuma pessoa cadastrada.\n" << endl;
+        cout << "\nNenhuma pessoa cadastrada para ser removida." << endl;
         return;
     }
 
@@ -161,7 +164,7 @@ void removerPessoa(Pessoa* vetor[], int& total)
     cin >> escolha;
 
     if(escolha < 1 || escolha > total || vetor[escolha - 1] == nullptr) {
-        cout << "Número inválido. Tente novamente.\n" << endl;
+        cout << "\nNúmero inválido. Tente novamente.\n" << endl;
         return; // Retorna se a escolha for inválida
     }
 
@@ -173,92 +176,96 @@ void removerPessoa(Pessoa* vetor[], int& total)
     }
 
     total--;
-    cout << "Pessoa removida com sucesso.\n" << endl;
+    cout << "\nPessoa removida com sucesso." << endl;
 }
 
 
-Pessoa* criarPessoa()
-{
-    string nome, endereco;
-    int idade;
+// Pessoa* criarPessoa()
+// {
+//     string nome, endereco;
+//     int idade;
 
-    cout << "Digite o nome da pessoa: ";
-    cin.ignore();
-    getline(cin, nome);
+//     cout << "Digite o nome da pessoa: ";
+//     cin.ignore();
+//     getline(cin, nome);
 
-    cout << "Digite a idade da pessoa: ";
-    cin >> idade;
+//     cout << "Digite a idade da pessoa: ";
+//     cin >> idade;
 
-    cout << "Digite o endereco da pessoa: ";
-    cin.ignore();
-    getline(cin, endereco);
+//     cout << "Digite o endereco da pessoa: ";
+//     cin.ignore();
+//     getline(cin, endereco);
 
-    return _pessoa_cria(nome, idade, endereco);
-}
+//     return _pessoa_cria(nome, idade, endereco);
+// }
 
-void visualizarPessoa(Pessoa* p)
-{
-    string nome, endereco;
-    int idade;
+// void visualizarPessoa(Pessoa* p)
+// {
+//     string nome, endereco;
+//     int idade;
 
-    _pessoa_acessa(p, &nome, &idade, &endereco);
+//     _pessoa_acessa(p, &nome, &idade, &endereco);
 
-    cout << "Nome: " << nome << endl;
-    cout << "Idade: " << idade << endl;
-    cout << "Endereco: " << endereco << endl;
-}
+//     cout << "Nome: " << nome << endl;
+//     cout << "Idade: " << idade << endl;
+//     cout << "Endereco: " << endereco << endl;
+// }
 
-void alterarPessoa(Pessoa* p)
-{
-    string nome, endereco;
-    int idade;
+// void alterarPessoa(Pessoa* p)
+// {
+//     string nome, endereco;
+//     int idade;
 
-    cout << "Digite o novo nome da pessoa: ";
-    cin.ignore();
-    getline(cin, nome);
+//     cout << "Digite o novo nome da pessoa: ";
+//     cin.ignore();
+//     getline(cin, nome);
 
-    cout << "Digite a nova idade da pessoa: ";
-    cin >> idade;
+//     cout << "Digite a nova idade da pessoa: ";
+//     cin >> idade;
 
-    cout << "Digite o novo endereco da pessoa: ";
-    cin.ignore();
-    getline(cin, endereco);
+//     cout << "Digite o novo endereco da pessoa: ";
+//     cin.ignore();
+//     getline(cin, endereco);
 
-    _pessoa_atribui(p, nome, idade, endereco);
-}
+//     _pessoa_atribui(p, nome, idade, endereco);
+// }
 
-void removerPessoa(Pessoa** p)
-{
-    if(*p != nullptr) {
-        _pessoa_libera(*p);
-        *p = nullptr;
-    }
-}
+// void removerPessoa(Pessoa** p)
+// {
+//     if(*p != nullptr) {
+//         _pessoa_libera(*p);
+//         *p = nullptr;
+//     }
+// }
 
 void menu()
 {
     char opcao;
-    Pessoa* p = nullptr;
+    Pessoa* pessoas[CAPACIDADE] = {nullptr}; // Vetor para armazenar os ponteiros para as pessoas
+    int totalPessoas = 0; // Variável para controlar o total de pessoas cadastradas
 
     do{
-        cout << "========== MENU ==========" << endl;
+        cout << "\n========== MENU ==========" << endl;
         cout << "1. Criar Pessoa" << endl;
         cout << "2. Visualizar Pessoa" << endl;
         cout << "3. Alterar Pessoa" << endl;
         cout << "4. Remover Pessoa" << endl;
+        cout << "5. Listar Pessoas" << endl;
         cout << "0. Sair" << endl;
         cout << "Escolha uma opcao: ";        
         cin >> opcao;
 
         switch(opcao)
         {
-            case '1': if(p) cout << "Pessoa ja criada. Remova-a primeiro.\n" << endl; else p = criarPessoa(); break;
+            case '1': criarPessoa(pessoas, totalPessoas); break;
 
-            case '2': if(p) visualizarPessoa(p); else cout << "Nenhuma pessoa listada.\n" << endl; break;
+            case '2': visualizarPessoa(pessoas, totalPessoas); break;
 
-            case '3': if(p) alterarPessoa(p); else cout << "Nenhuma pessoa para ser alterada.\n" << endl; break;
+            case '3': alterarPessoa(pessoas, totalPessoas); break;
 
-            case '4': if(p) removerPessoa(&p); else cout << "Nenhuma pessoa para ser removida.\n" << endl; break;
+            case '4': removerPessoa(pessoas, totalPessoas); break;
+
+            case '5': listarPessoas(pessoas, totalPessoas); break;
 
             case '0': cout << "Saindo...\n" << endl; break;
 
