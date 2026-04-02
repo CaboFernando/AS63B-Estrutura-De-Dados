@@ -2,21 +2,21 @@
 #include "pessoa.cpp"
 using namespace std;
 
-// Capacidade máxima do vetor
+// Capacidade maxima do vetor
 const int CAPACIDADE = 10;
 
-// Função para encontrar o índice de uma pessoa no vetor pelo nome
+// Funçao para encontrar o indice de uma pessoa no vetor pelo nome
 int encontrarPessoa(Pessoa* vetor[], int total, string nome)
 {
     for(int i = 0; i < total; i++) 
     {
         if(vetor[i] != nullptr && vetor[i]->nome == nome)
-            return i; // Retorna o índice da pessoa encontrada
+            return i; // Retorna o indice da pessoa encontrada
     }
-    return -1; // Retorna -1 se a pessoa não for encontrada
+    return -1; // Retorna -1 se a pessoa nao for encontrada
 }
 
-// Função para listar todas as pessoas
+// Funçao para listar todas as pessoas
 void listarPessoas(Pessoa* vetor[], int total)
 {
     if(total == 0) {
@@ -32,12 +32,12 @@ void listarPessoas(Pessoa* vetor[], int total)
     cout << "==========================\n" << endl;
 }
 
-// Função para criar uma nova pessoa e adicioná-la ao vetor
+// Funçao para criar uma nova pessoa e adiciona-la ao vetor
 bool criarPessoa(Pessoa* vetor[], int& total)
 {
     if(total >= CAPACIDADE) {
-        cout << "\nCapacidade máxima atingida. Não é possível criar mais pessoas.\n" << endl;
-        return false; // Retorna false se a capacidade máxima for atingida
+        cout << "\nCapacidade maxima atingida. Nao é possivel criar mais pessoas.\n" << endl;
+        return false; // Retorna false se a capacidade maxima for atingida
     }
 
     string nome, endereco;
@@ -49,8 +49,8 @@ bool criarPessoa(Pessoa* vetor[], int& total)
 
     if(encontrarPessoa(vetor, total, nome) != -1)
     {
-        cout << "\nPessoa com esse nome já existe. Tente novamente.\n" << endl;
-        return false; // Retorna false se a pessoa já existir
+        cout << "\nPessoa com esse nome ja existe. Tente novamente.\n" << endl;
+        return false; // Retorna false se a pessoa ja existir
     }
 
     cout << "Digite a idade da pessoa: ";
@@ -73,7 +73,7 @@ bool criarPessoa(Pessoa* vetor[], int& total)
     return false;
 }
 
-// Função para visualizar os detalhes de uma pessoa específica
+// Funçao para visualizar os detalhes de uma pessoa especifica
 void visualizarPessoa(Pessoa* vetor[], int total)
 {
     if(total == 0) {
@@ -84,12 +84,12 @@ void visualizarPessoa(Pessoa* vetor[], int total)
     listarPessoas(vetor, total);
 
     int escolha;
-    cout << "Digite o número da pessoa que deseja visualizar: ";
+    cout << "Digite o numero da pessoa que deseja visualizar: ";
     cin >> escolha;
 
     if(escolha < 1 || escolha > total || vetor[escolha - 1] == nullptr) {
-        cout << "\nNúmero inválido. Tente novamente.\n" << endl;
-        return; // Retorna se a escolha for inválida
+        cout << "\nNumero invalido. Tente novamente.\n" << endl;
+        return; // Retorna se a escolha for invalida
     }
 
     Pessoa* p = vetor[escolha - 1]; // Obtém a pessoa selecionada
@@ -105,7 +105,7 @@ void visualizarPessoa(Pessoa* vetor[], int total)
     cout << "==========================\n" << endl;
 }
 
-// Função para alterar os detalhes de uma pessoa específica
+// Funçao para alterar os detalhes de uma pessoa especifica
 void alterarPessoa(Pessoa* vetor[], int total)
 {
     if(total == 0) {
@@ -116,12 +116,12 @@ void alterarPessoa(Pessoa* vetor[], int total)
     listarPessoas(vetor, total);
 
     int escolha;
-    cout << "Digite o número da pessoa que deseja alterar: ";
+    cout << "Digite o numero da pessoa que deseja alterar: ";
     cin >> escolha;
 
     if(escolha < 1 || escolha > total || vetor[escolha - 1] == nullptr) {
-        cout << "\nNúmero inválido. Tente novamente.\n" << endl;
-        return; // Retorna se a escolha for inválida
+        cout << "\nNumero invalido. Tente novamente.\n" << endl;
+        return; // Retorna se a escolha for invalida
     }
 
     string nome, endereco;
@@ -131,11 +131,11 @@ void alterarPessoa(Pessoa* vetor[], int total)
     cin.ignore();
     getline(cin, nome);
 
-    // Verifica se o novo nome já existe para outra pessoa no vetor, ignorando a pessoa que está sendo alterada
+    // Verifica se o novo nome ja existe para outra pessoa no vetor, ignorando a pessoa que esta sendo alterada
     int indiceExistente = encontrarPessoa(vetor, total, nome);
     if(indiceExistente != -1 && indiceExistente != (escolha - 1)) {
-        cout << "Pessoa com esse nome já existe. Tente novamente.\n" << endl;
-        return; // Retorna se o novo nome já existir para outra pessoa
+        cout << "Pessoa com esse nome ja existe. Tente novamente.\n" << endl;
+        return; // Retorna se o novo nome ja existir para outra pessoa
     }
 
     cout << "Digite a nova idade da pessoa: ";
@@ -149,7 +149,7 @@ void alterarPessoa(Pessoa* vetor[], int total)
     cout << "\nPessoa alterada com sucesso." << endl;
 }
 
-// Função para remover uma pessoa específica do vetor
+// Funçao para remover uma pessoa especifica do vetor
 void removerPessoa(Pessoa* vetor[], int& total)
 {
     if(total == 0) {
@@ -160,12 +160,12 @@ void removerPessoa(Pessoa* vetor[], int& total)
     listarPessoas(vetor, total);
 
     int escolha;
-    cout << "Digite o número da pessoa que deseja remover: ";
+    cout << "Digite o numero da pessoa que deseja remover: ";
     cin >> escolha;
 
     if(escolha < 1 || escolha > total || vetor[escolha - 1] == nullptr) {
-        cout << "\nNúmero inválido. Tente novamente.\n" << endl;
-        return; // Retorna se a escolha for inválida
+        cout << "\nNumero invalido. Tente novamente.\n" << endl;
+        return; // Retorna se a escolha for invalida
     }
 
     _pessoa_libera(vetor[escolha - 1]); // Libera a memória da pessoa selecionada
@@ -177,6 +177,13 @@ void removerPessoa(Pessoa* vetor[], int& total)
 
     total--;
     cout << "\nPessoa removida com sucesso." << endl;
+}
+
+void liberarTodasPessoas(Pessoa* vetor[], int& total)
+{
+    for(int i = 0; i < total; i++) {
+        if(vetor[i] != nullptr) _pessoa_libera(vetor[i]); // Libera a memória de cada pessoa
+    }
 }
 
 
@@ -242,7 +249,7 @@ void menu()
 {
     char opcao;
     Pessoa* pessoas[CAPACIDADE] = {nullptr}; // Vetor para armazenar os ponteiros para as pessoas
-    int totalPessoas = 0; // Variável para controlar o total de pessoas cadastradas
+    int totalPessoas = 0; // Variavel para controlar o total de pessoas cadastradas
 
     do{
         cout << "\n========== MENU ==========" << endl;
@@ -258,17 +265,11 @@ void menu()
         switch(opcao)
         {
             case '1': criarPessoa(pessoas, totalPessoas); break;
-
             case '2': visualizarPessoa(pessoas, totalPessoas); break;
-
             case '3': alterarPessoa(pessoas, totalPessoas); break;
-
             case '4': removerPessoa(pessoas, totalPessoas); break;
-
             case '5': listarPessoas(pessoas, totalPessoas); break;
-
-            case '0': cout << "Saindo...\n" << endl; break;
-
+            case '0': cout << "Saindo...\n" << endl; liberarTodasPessoas(pessoas, totalPessoas); break;
             default: cout << "Opcao invalida. Tente novamente.\n" << endl;
         }
 
