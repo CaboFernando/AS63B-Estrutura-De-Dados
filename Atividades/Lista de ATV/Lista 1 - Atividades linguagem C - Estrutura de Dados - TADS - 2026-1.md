@@ -1,16 +1,17 @@
 # **LISTA DE ATIVIDADES 1**
 
-### ---
+---
 
 ### **Questão 1 \- Certo**
 
-### Em C/C++, uma variável pode ser entendida como:
+Em C/C++, uma variável pode ser entendida como:
 
-###  A) **Um local na memória identificado por um nome**
+ A) **Um local na memória identificado por um nome**  
+ B) Um valor fixo armazenado diretamente no código-fonte  
+ C) Um registrador da CPU acessado diretamente pelo programador  
+ D) Um tipo de dado sem localização física bem definida
 
-###  B) Um valor fixo armazenado diretamente no código-fonte  C) Um registrador da CPU acessado diretamente pelo programador  D) Um tipo de dado sem localização física bem definida
-
-### ---
+---
 
 ### **Questão 2 \- Certo**
 
@@ -104,8 +105,11 @@ O operador `&` em C/C++ é utilizado para:
 
 Considere o trecho:
 
-| int myvar; int foo; foo \= \&myvar; |
-| :---- |
+```c++
+ int myvar;
+ int foo;
+ foo = &myvar;
+``` 
 
 Após a execução, a variável `foo` contém:
 
@@ -120,8 +124,10 @@ Após a execução, a variável `foo` contém:
 
 Qual é a principal diferença entre as instruções abaixo?
 
-| foo \= \&myvar; bar \= myvar; |
-| :---- |
+```c++
+ foo = &myvar;
+ bar = myvar;
+``` 
 
  A) Ambas atribuem o endereço de `myvar`  
  B) Ambas atribuem o valor de `myvar`  
@@ -134,8 +140,9 @@ Qual é a principal diferença entre as instruções abaixo?
 
 Suponha que `myvar` armazena o valor 25 e está no endereço 1776\. Após executar:
 
-| foo \= \&myvar; |
-| :---- |
+```c++
+ foo = &myvar;
+``` 
 
 Qual será o valor de `foo`?
 
@@ -150,8 +157,11 @@ Qual será o valor de `foo`?
 
 Considere o código:
 
-| myvar \= 25; foo \= \&myvar; bar \= myvar; |
-| :---- |
+```c++
+ myvar = 25;
+ foo = &myvar;
+ bar = myvar;
+``` 
 
 Qual é o valor armazenado em `bar`?
 
@@ -210,8 +220,12 @@ O operador `*` aplicado a um ponteiro é utilizado para:
 
 Considere:
 
-| int myvar \= 25; int \*foo \= \&myvar; int baz; baz \= \*foo; |
-| :---- |
+```c++
+ int myvar = 25;
+ int *foo = &myvar;
+ int baz;
+ baz = *foo;
+``` 
 
 Qual será o valor de `baz`?
 
@@ -226,8 +240,9 @@ Qual será o valor de `baz`?
 
 Dada a instrução:
 
-| baz \= foo; |
-| :---- |
+```c++
+ baz = foo;
+``` 
 
 Sabendo que `foo` é um ponteiro que armazena o valor 1776, o valor de `baz` será:
 
@@ -253,8 +268,10 @@ Qual a diferença entre `foo` e `*foo`?
 
 Considere que:
 
-* `myvar = 25`  
-* `foo = &myvar`
+```c++
+ myvar = 25
+ foo = &myvar
+``` 
 
 Qual expressão retorna o valor 25?
 
@@ -280,8 +297,10 @@ Sobre os operadores `&` e `*`, é correto afirmar:
 
 Após executar:
 
-| myvar \= 25; foo \= \&myvar; |
-| :---- |
+```c++
+ myvar = 25;
+ foo = &myvar;
+``` 
 
 Qual das alternativas é verdadeira?
 
@@ -318,8 +337,9 @@ A sintaxe correta para declarar um ponteiro em C/C++ é:
 
 Na declaração abaixo:
 
-| int \*number; |
-| :---- |
+```c++
+ int *number;
+``` 
 
 O que significa `int`?
 
@@ -334,8 +354,11 @@ O que significa `int`?
 
 Considere as declarações:
 
-| int \*p1; char \*p2; double \*p3; |
-| :---- |
+```c++
+ int *p1;
+ char *p2;
+ double *p3;
+``` 
 
 É correto afirmar que:
 
@@ -361,8 +384,9 @@ Sobre o operador `*` na declaração de ponteiros, é correto afirmar:
 
 Considere:
 
-| int \*p1, p2; |
-| :---- |
+```c++
+ int *p1, p2;
+``` 
 
 Qual alternativa está correta?
 
@@ -377,8 +401,12 @@ Qual alternativa está correta?
 
 No código:
 
-| int firstvalue, secondvalue; int \*mypointer; mypointer \= \&firstvalue; \*mypointer \= 10; |
-| :---- |
+```c++
+ int firstvalue, secondvalue;
+ int *mypointer;
+ mypointer = &firstvalue;
+ *mypointer = 10;
+``` 
 
 Após a execução, o valor de `firstvalue` será:
 
@@ -393,8 +421,10 @@ Após a execução, o valor de `firstvalue` será:
 
 Ainda no mesmo código, após:
 
-| mypointer \= \&secondvalue; \*mypointer \= 20; |
-| :---- |
+```c++
+ mypointer = &secondvalue;
+ *mypointer = 20;
+``` 
 
 O valor de `secondvalue` será:
 
@@ -409,8 +439,14 @@ O valor de `secondvalue` será:
 
 Considere o código:
 
-| int firstvalue \= 5, secondvalue \= 15; int \*p1, \*p2; p1 \= \&firstvalue; p2 \= \&secondvalue; \*p1 \= 10; \*p2 \= \*p1; |
-| :---- |
+```c++
+ int firstvalue = 5, secondvalue = 15;
+ int *p1, *p2;
+ p1 = &firstvalue;
+ p2 = &secondvalue;
+ *p1 = 10;
+ *p2 = *p1;
+``` 
 
 Qual será o valor de `secondvalue` ao final?
 
@@ -425,8 +461,10 @@ Qual será o valor de `secondvalue` ao final?
 
 Considere a continuação:
 
-| p1 \= p2; \*p1 \= 20; |
-| :---- |
+```c++
+ p1 = p2;
+ *p1 = 20;
+``` 
 
 Qual será o valor final de `secondvalue`?
 
