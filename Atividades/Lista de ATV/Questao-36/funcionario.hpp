@@ -8,7 +8,7 @@ struct Funcionario
     int idade;
 };
 
-typedef struct Funcionario Funcionario;;
+typedef struct Funcionario Funcionario;
 
 void atualizarDados(Funcionario *f, float aumentoSalario, int idade)
 {
