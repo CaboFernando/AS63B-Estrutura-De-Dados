@@ -1,6 +1,5 @@
 Gabarito:
-
- 1) D
+ 1) A
  2) D
  3) E
  4) B
@@ -22,3 +21,6 @@ Minhas respostas:
  8) - (A) Correta
  9) - (E) Correta
 10) - (A) Errada
+
+Valor total da prova: 2,0
+Minha nota: 1,4

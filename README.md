@@ -25,6 +25,9 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 4    | Recursividade em estrutura de dados |
 | 5    | Revisão do fatorial, fibonacci, contagem regressiva e Tipos abstratos de dados (TAD) |
 | 6    | Tipos abstratos de dados (TAD) Crud de BoundingBox utilizando strucs em C |
+| 7    | Revisão para prova |
+| 8    | Prova |
+| 9    | Correção da prova e introdução ao conteúdo de Listas (Estáticas e Dinâmicas) |
 
 ---
 

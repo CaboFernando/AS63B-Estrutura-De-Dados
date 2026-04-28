@@ -1,0 +1,17 @@
+
+- Listas:
+
+ - Estáticas:
+     - São basicamente Arrays com tamanhos pré definidos.
+ 
+ - Dinânicas:
+     - Não temos a definição do tamanho máximo da lista.
+     - Geralmente usamos uma struct para representar cada nodo (nó).
+     - Cada nó tem 2 tipos de conteúdo. 1° representa dados, 2° representa endereço (ponteiro) do próximo nó.
+     - 1° Definir/criar a lista (cabeça/head).
+     - 2° Checar se a lista existe. Se não existe, criar uma.
+     - 3° Inserir um novo nó. Valide o end do nó atual, e verificar o end do próximo nó é null. Se null é o último, senão vai para o próximo nó.
+
+
+
+
