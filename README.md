@@ -29,6 +29,8 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 8    | Prova |
 | 9    | Correção da prova e introdução ao conteúdo de Listas (Estáticas e Dinâmicas) |
 | 10   | Implementação do crud com a lista estática |
+| 11   | Ubundo SO + Finalização da lista estática |
+| 11   | Inicio da implementaçãod a lista dinâmica |
 
 ---
 
