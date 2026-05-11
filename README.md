@@ -31,6 +31,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 10   | Implementação do crud com a lista estática |
 | 11   | Ubundo SO + Finalização da lista estática |
 | 11   | Inicio da implementaçãod a lista dinâmica |
+| 12   |  |
 
 ---
 
