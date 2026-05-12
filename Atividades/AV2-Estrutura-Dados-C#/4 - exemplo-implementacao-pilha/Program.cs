@@ -176,5 +176,15 @@ class Program
 		Aluno topo = pilha.Peek();
 		if (topo != null)
 			Console.WriteLine($"Topo: {topo.Nome} (Matrícula: {topo.Matricula})");
+
+        // =====================
+		// 4. Edição
+		// =====================
+		Console.WriteLine("\n4. EDIÇÃO");
+		Console.WriteLine("===========");
+		pilha.Editar(
+			a => a.Matricula == 3,
+			a => { a.N1 = 8.5; Console.WriteLine($"Nota N1 de {a.Nome} atualizada para 8.5"); }
+		);
 	}
 }
