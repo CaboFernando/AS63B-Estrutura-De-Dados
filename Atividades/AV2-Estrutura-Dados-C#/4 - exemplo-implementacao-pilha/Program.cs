@@ -61,5 +61,17 @@ class Pilha<T>
 		Console.WriteLine($"✓ Elemento removido. Tamanho: {elementos.Count}");
 		return item;
 	}
+
+    // Retorna o elemento do topo sem remover
+	public T Peek()
+	{
+		if (EstaVazia())
+		{
+			Console.WriteLine("✗ Erro: pilha vazia!");
+			return default(T);
+		}
+
+		return elementos[elementos.Count - 1];
+	}
 }
 
