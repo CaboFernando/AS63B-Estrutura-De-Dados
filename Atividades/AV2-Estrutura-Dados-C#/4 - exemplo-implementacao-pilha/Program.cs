@@ -39,5 +39,12 @@ class Pilha<T>
 	{
 		return elementos.Count == 0;
 	}
+
+    // Insere um elemento no topo da pilha
+	public void Push(T item)
+	{
+		elementos.Add(item);
+		Console.WriteLine($"✓ Elemento inserido. Tamanho: {elementos.Count}");
+	}
 }
 
