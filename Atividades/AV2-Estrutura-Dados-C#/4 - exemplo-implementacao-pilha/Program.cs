@@ -90,5 +90,20 @@ class Pilha<T>
 			Console.WriteLine("---");
 		}
 	}
+
+    // Edita um elemento baseado em uma condição (exemplo: busca por matrícula)
+	public void Editar(Func<T, bool> condicao, Action<T> atualizacao)
+	{
+		for (int i = 0; i < elementos.Count; i++)
+		{
+			if (condicao(elementos[i]))
+			{
+				atualizacao(elementos[i]);
+				Console.WriteLine("✓ Elemento atualizado.");
+				return;
+			}
+		}
+		Console.WriteLine("✗ Elemento não encontrado.");
+	}
 }
 
