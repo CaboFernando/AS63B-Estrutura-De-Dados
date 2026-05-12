@@ -22,7 +22,7 @@ Professor: Clayton Kossoski | claytonkossoski@utfpr.edu.br
 | **Nome** | **RA** |
 |------------------------|---------------|
 | Carlos Fernando dos Santos | 1692984 |
-| Carolyne |  |
+| Maria Carolyne |  |
 | Rayssa Okamura |  |
 | Fernando Souza |  |
 
