@@ -48,11 +48,15 @@ obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passag
 
 ```
 ├── 1 - configuracao-ambiente/
+    └── Config.md
 ├── 2 - sintaxe-basica/
+    └── Sintexe.md
 ├── 3 - exemplo-basico-hello-world/
     ├── hello-world.csproj
     └── Program.cs
 ├── 4 - exemplo-implementacao-pilha/
+    ├── hello-world.csproj
+    └── Program.cs
 ├── Extra - exemplo-estrutura-pilha-c#/
     ├── Extra - exemplo-estrutura-pilha-c#.csproj
     └── Program.cs
