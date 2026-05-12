@@ -54,6 +54,8 @@ obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passag
     └── Program.cs
 ├── 4 - exemplo-implementacao-pilha/
 ├── Extra - exemplo-estrutura-pilha-c#/
+    ├── Extra - exemplo-estrutura-pilha-c#.csproj
+    └── Program.cs
 └── Descricao.md
 ```
 
