@@ -44,5 +44,35 @@ obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passag
 
 ---
 
+## 🧩 Estrutura do Projeto
+
+```
+├── Descricao.md
+├── exemplo-estrutura-pilha-c#/
+└── hello-world/
+	├── hello-world.csproj
+	└── Program.cs
+```
+
+---
+
+## 👋 Criação do Hello World
+
+O exemplo Hello World foi criado dentro da pasta `hello-world` usando o comando `dotnet new console`, que gera a estrutura inicial de um projeto de aplicação console em C#. Depois disso, o projeto é executado com `dotnet run`, e o código principal fica no arquivo `Program.cs`, onde é chamada a instrução `Console.WriteLine("Hello, World!")` para exibir a mensagem no terminal. Esse exemplo serve como uma introdução à estrutura básica de um programa em C# e mostra a execução inicial do projeto no ambiente .NET.
+
+---
+
+## 🔧 Compilação e Execução
+
+Entre na pasta do projeto e execute com o SDK .NET:
+
+```bash
+cd hello-world
+dotnet build
+dotnet run
+```
+
+---
+
 **Data da entrega:** 18/05  
 **Local:** Apresentação ao professor durante a aula
