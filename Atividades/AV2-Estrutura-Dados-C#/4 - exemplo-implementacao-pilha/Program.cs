@@ -167,5 +167,14 @@ class Program
 		Console.WriteLine("==========================");
 		pilha.Exibir();
 		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
+
+        // =====================
+		// 3. Leitura (Peek)
+		// =====================
+		Console.WriteLine("\n3. LEITURA (Peek - topo)");
+		Console.WriteLine("=========================");
+		Aluno topo = pilha.Peek();
+		if (topo != null)
+			Console.WriteLine($"Topo: {topo.Nome} (Matrícula: {topo.Matricula})");
 	}
 }
