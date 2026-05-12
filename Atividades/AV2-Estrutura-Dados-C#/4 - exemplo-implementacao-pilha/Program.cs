@@ -195,5 +195,12 @@ class Program
 		Aluno removido = pilha.Pop();
 		if (removido != null)
 			Console.WriteLine($"Removido: {removido.Nome}");
+
+		// =====================
+		// 6. Remoção específica (nem típico de pilha, mas implementado)
+		// =====================
+		Console.WriteLine("\n6. REMOÇÃO ESPECÍFICA (busca por matrícula 1)");
+		Console.WriteLine("==============================================");
+		pilha.RemoverEspecifico(a => a.Matricula == 1);
 	}
 }
