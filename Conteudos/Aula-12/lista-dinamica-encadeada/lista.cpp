@@ -73,6 +73,54 @@ void imprime_lista(Lista *li)
     }
 }
 
+int remove_lista_final(Lista* li)
+{
+    if(li == nullptr || *li == nullptr)
+        return 0;
+    
+    elemento *ant = nullptr;
+    elemento *no = *li;
+
+    while (no -> prox != nullptr)
+    {
+        ant = no;
+        no = no -> prox;
+    }
+    
+    if(ant == nullptr)
+        *li = nullptr;
+    else
+        ant -> prox = nullptr;
+
+    delete no;
+
+    return 1;
+}
+
+int remove_lista_meio(Lista *li, int mat)
+{
+    if(li == nullptr || *li == nullptr)
+        return 0;
+    
+    elemento *ant = nullptr;
+    elemento *no = *li;
+
+    while (no -> prox != nullptr && no -> dados.matricula != mat)
+    {
+        ant = no;
+        no = no -> prox;
+    }
+
+    if(ant == nullptr)
+        *li = nullptr;
+    else
+        ant -> prox = nullptr;
+
+    delete no;
+
+    return 1;
+}
+
 int main()
 {
     aluno a[4] = {
@@ -90,10 +138,13 @@ int main()
     imprime_lista(li);
     
     // Continuar implementação com:
-    // - Remoção de um nó da lista
+    // - Remoção de um nó da lista - feito
     // - Inserção ordenada (matrícula)
     // - Liberação da lista (liberar cada nó existes, não somente a cabeça da lsita)
     // - Contar o tamanho da lista
+
+    // Continuar implementação com:
+    // - Crie uma função para remover todos os nós
 
     return 0;
 }

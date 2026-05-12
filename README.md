@@ -30,8 +30,8 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 9    | Correção da prova e introdução ao conteúdo de Listas (Estáticas e Dinâmicas) |
 | 10   | Implementação do crud com a lista estática |
 | 11   | Ubundo SO + Finalização da lista estática |
-| 11   | Inicio da implementaçãod a lista dinâmica |
-| 12   |  |
+| 12   | Inicio da implementaçãod a lista dinâmica |
+| 13   | Finalização da lista dinâmica, Conteúdo da próxima avaliação Conteudos/Aula12/lista-dinamica-encadeada/main.cpp e nova atividade avaliativa no moodle |
 
 ---
 
@@ -39,6 +39,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 
 * C
 * C++
+* C#
 * Visual Studio Code
 
 ---
