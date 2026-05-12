@@ -149,5 +149,15 @@ class Program
 			new Aluno { Matricula = 1, Nome = "Bianca", N1 = 9.7, N2 = 6.7, N3 = 8.4 },
 			new Aluno { Matricula = 3, Nome = "Ana", N1 = 5.7, N2 = 6.1, N3 = 7.4 }
 		};
+
+        // =====================
+		// 1. Inserção (Push)
+		// =====================
+		Console.WriteLine("1. INSERÇÃO (Push)");
+		Console.WriteLine("==================");
+		for (int i = 0; i < alunos.Length; i++)
+		{
+			pilha.Push(alunos[i]);
+		}
 	}
 }
