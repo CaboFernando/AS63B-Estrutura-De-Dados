@@ -46,5 +46,20 @@ class Pilha<T>
 		elementos.Add(item);
 		Console.WriteLine($"✓ Elemento inserido. Tamanho: {elementos.Count}");
 	}
+
+    // Remove e retorna o elemento do topo
+	public T Pop()
+	{
+		if (EstaVazia())
+		{
+			Console.WriteLine("✗ Erro: pilha vazia!");
+			return default(T);
+		}
+
+		T item = elementos[elementos.Count - 1];
+		elementos.RemoveAt(elementos.Count - 1);
+		Console.WriteLine($"✓ Elemento removido. Tamanho: {elementos.Count}");
+		return item;
+	}
 }
 
