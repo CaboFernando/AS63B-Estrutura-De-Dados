@@ -105,5 +105,21 @@ class Pilha<T>
 		}
 		Console.WriteLine("✗ Elemento não encontrado.");
 	}
+
+    // Remove um elemento específico (simulando remoção de meio, típica de lista)
+	public bool RemoverEspecifico(Func<T, bool> condicao)
+	{
+		for (int i = 0; i < elementos.Count; i++)
+		{
+			if (condicao(elementos[i]))
+			{
+				elementos.RemoveAt(i);
+				Console.WriteLine($"✓ Elemento removido. Tamanho: {elementos.Count}");
+				return true;
+			}
+		}
+		Console.WriteLine("✗ Elemento não encontrado.");
+		return false;
+	}
 }
 
