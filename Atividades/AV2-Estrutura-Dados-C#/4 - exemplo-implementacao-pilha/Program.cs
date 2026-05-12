@@ -159,5 +159,13 @@ class Program
 		{
 			pilha.Push(alunos[i]);
 		}
+
+        // =====================
+		// 2. Percorrimento (Exibir)
+		// =====================
+		Console.WriteLine("\n2. PERCORRIMENTO (Exibir)");
+		Console.WriteLine("==========================");
+		pilha.Exibir();
+		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
 	}
 }
