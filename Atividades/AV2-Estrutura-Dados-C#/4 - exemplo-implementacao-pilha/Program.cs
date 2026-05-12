@@ -202,5 +202,13 @@ class Program
 		Console.WriteLine("\n6. REMOÇÃO ESPECÍFICA (busca por matrícula 1)");
 		Console.WriteLine("==============================================");
 		pilha.RemoverEspecifico(a => a.Matricula == 1);
+
+		// =====================
+		// 7. Estado final
+		// =====================
+		Console.WriteLine("\n7. ESTADO FINAL");
+		Console.WriteLine("================");
+		pilha.Exibir();
+		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
 	}
 }
