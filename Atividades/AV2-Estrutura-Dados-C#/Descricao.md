@@ -34,11 +34,11 @@ Estrutura de dados em outras linguagens.
 Estudar os conceitos fundamentais das linguagens de programação independentemente da tecnologia utilizada
 
 Cada equipe deverá elaborar uma apresentação abordando os seguintes tópicos:
-- Configuração do ambiente de desenvolvimento necessário;
-- Sintaxe básica da linguagem;
-- Exemplo básico de utilização (ex: Hello World);
-- Exemplo de implementação de uma estrutura de dados do tipo lista, fila ou pilha contendo métodos para - inserção, leitura, percorrimento, edição, e exclusão;
-- Compartilhamento do projeto funcional por meio de um repositório público no GitHub.
+- 1. Configuração do ambiente de desenvolvimento necessário;
+- 2. Sintaxe básica da linguagem;
+- 3. Exemplo básico de utilização (ex: Hello World);
+- 4. Exemplo de implementação de uma estrutura de dados do tipo lista, fila ou pilha contendo métodos para - inserção, leitura, percorrimento, edição, e exclusão;
+- 5. Compartilhamento do projeto funcional por meio de um repositório público no GitHub.
 
 obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passagem pela teoria da mesma.
 
@@ -47,18 +47,21 @@ obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passag
 ## 🧩 Estrutura do Projeto
 
 ```
-├── Descricao.md
-├── exemplo-estrutura-pilha-c#/
-└── hello-world/
-	├── hello-world.csproj
-	└── Program.cs
+├── 1 - configuracao-ambiente/
+├── 2 - sintaxe-basica/
+├── 3 - exemplo-basico-hello-world/
+    ├── hello-world.csproj
+    └── Program.cs
+├── 4 - exemplo-implementacao-pilha/
+├── Extra - exemplo-estrutura-pilha-c#/
+└── Descricao.md
 ```
 
 ---
 
 ## 👋 Criação do Hello World
 
-O exemplo Hello World foi criado dentro da pasta `hello-world` usando o comando `dotnet new console`, que gera a estrutura inicial de um projeto de aplicação console em C#. Depois disso, o projeto é executado com `dotnet run`, e o código principal fica no arquivo `Program.cs`, onde é chamada a instrução `Console.WriteLine("Hello, World!")` para exibir a mensagem no terminal. Esse exemplo serve como uma introdução à estrutura básica de um programa em C# e mostra a execução inicial do projeto no ambiente .NET.
+O exemplo Hello World foi criado dentro da pasta `3 - exemplo-basico-hello-world` (conteúdo em `3 - exemplo-basico-hello-world/hello-world.csproj`) usando o comando `dotnet new console`, que gera a estrutura inicial de um projeto de aplicação console em C#. Depois disso, o projeto é executado com `dotnet run`, e o código principal fica no arquivo `Program.cs`, onde é chamada a instrução `Console.WriteLine("Hello, World!")` para exibir a mensagem no terminal. Esse exemplo serve como uma introdução à estrutura básica de um programa em C# e mostra a execução inicial do projeto no ambiente .NET.
 
 ---
 
@@ -67,7 +70,7 @@ O exemplo Hello World foi criado dentro da pasta `hello-world` usando o comando 
 Entre na pasta do projeto e execute com o SDK .NET:
 
 ```bash
-cd hello-world
+cd "3 - exemplo-basico-hello-world"
 dotnet build
 dotnet run
 ```
