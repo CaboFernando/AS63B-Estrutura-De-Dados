@@ -48,21 +48,21 @@ obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passag
 
 ```
 ├── 1 - configuracao-ambiente/
-    └── Config.md
+    └── Config.md                                   # Arquivo markdown com a descrição da configuração de ambiente para rodar programas c#
 ├── 2 - sintaxe-basica/
-    └── Sintexe.md
+    └── Sintexe.md                                  # Arquivo markdown com a descrição da sintexe básica para utilização de programas c#
 ├── 3 - exemplo-basico-hello-world/
-    ├── exemplo-basico-hello-world.csproj
-    └── Program.cs
+    ├── exemplo-basico-hello-world.csproj           # Arquivo de configuração de projeto do tipo console
+    └── Program.cs                                  # Arquivo c# com a implementação de um hello world
 ├── 4 - exemplo-implementacao-pilha/
-    ├── exemplo-implementacao-pilha.csproj
-    ├── Aluno.cs
-    ├── Pilha.cs
-    └── Program.cs
+    ├── exemplo-implementacao-pilha.csproj          # Arquivo de configuração de projeto do tipo console
+    ├── Aluno.cs                                    # Arquivo c# com a implementação da classe Aluno usado no CRUD com pilha em c#
+    ├── Pilha.cs                                    # Arquivo c# com a implementação da classe Pilha usado no CRUD com pilha em c#
+    └── Program.cs                                  # Arquivo c# com a implementação da classe principal com as chamadas para o CRUD com pilha em c#
 ├── Extra - exemplo-estrutura-pilha-c#/
-    ├── Extra - exemplo-estrutura-pilha-c#.csproj
-    └── Program.cs
-└── Descricao.md
+    ├── Extra - exemplo-estrutura-pilha-c#.csproj   # Arquivo de configuração de projeto do tipo console
+    └── Program.cs                                  # Arquivo c# com a implementação básica de uma pilha em c#
+└── Descricao.md                                    # Arquivo markdown com toda a descrição do projeto
 ```
 
 ---
