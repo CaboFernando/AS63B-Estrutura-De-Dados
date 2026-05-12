@@ -73,5 +73,22 @@ class Pilha<T>
 
 		return elementos[elementos.Count - 1];
 	}
+
+    // Percorre e exibe todos os elementos (do topo para a base)
+	public void Exibir()
+	{
+		if (EstaVazia())
+		{
+			Console.WriteLine("Pilha vazia.");
+			return;
+		}
+
+		Console.WriteLine("\n--- Conteúdo da Pilha (topo → base) ---");
+		for (int i = elementos.Count - 1; i >= 0; i--)
+		{
+			Console.WriteLine(elementos[i]);
+			Console.WriteLine("---");
+		}
+	}
 }
 
