@@ -121,5 +121,12 @@ class Pilha<T>
 		Console.WriteLine("✗ Elemento não encontrado.");
 		return false;
 	}
+
+    // Limpa toda a pilha
+	public void Limpar()
+	{
+		elementos.Clear();
+		Console.WriteLine("✓ Pilha limpa.");
+	}
 }
 
