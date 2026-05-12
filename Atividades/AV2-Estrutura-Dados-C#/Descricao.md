@@ -52,10 +52,12 @@ obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passag
 ├── 2 - sintaxe-basica/
     └── Sintexe.md
 ├── 3 - exemplo-basico-hello-world/
-    ├── hello-world.csproj
+    ├── exemplo-basico-hello-world.csproj
     └── Program.cs
 ├── 4 - exemplo-implementacao-pilha/
-    ├── hello-world.csproj
+    ├── exemplo-implementacao-pilha.csproj
+    ├── Aluno.cs
+    ├── Pilha.cs
     └── Program.cs
 ├── Extra - exemplo-estrutura-pilha-c#/
     ├── Extra - exemplo-estrutura-pilha-c#.csproj
