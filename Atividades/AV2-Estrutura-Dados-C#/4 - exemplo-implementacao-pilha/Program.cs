@@ -210,5 +210,19 @@ class Program
 		Console.WriteLine("================");
 		pilha.Exibir();
 		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
+        
+        // =====================
+		// 8. Removendo até esvaziar
+		// =====================
+		Console.WriteLine("\n8. REMOVENDO ATÉ ESVAZIAR (Pop sucessivos)");
+		Console.WriteLine("===========================================");
+		while (!pilha.EstaVazia())
+		{
+			Aluno al = pilha.Pop();
+			if (al != null)
+				Console.WriteLine($"Removido: {al.Nome} | Tamanho restante: {pilha.Tamanho()}");
+		}
+
+		Console.WriteLine("\n✓ Fim do programa.");
 	}
 }
