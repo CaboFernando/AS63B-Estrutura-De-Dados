@@ -32,6 +32,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 11   | Ubundo SO + Finalização da lista estática |
 | 12   | Inicio da implementaçãod a lista dinâmica |
 | 13   | Finalização da lista dinâmica, Conteúdo da próxima avaliação Conteudos/Aula12/lista-dinamica-encadeada/main.cpp e nova atividade avaliativa no moodle |
+| 14   | Aula sobre Git e GitHub & Implementação da AV2 |
 
 ---
 

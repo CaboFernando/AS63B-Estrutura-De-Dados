@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-namespace ExemploPilha;
+﻿namespace ExemploPilha;
 
 // =====================
 // Programa Principal
@@ -49,18 +47,8 @@ class Program
 		if (topo != null)
 			Console.WriteLine($"Topo: {topo.Nome} (Matrícula: {topo.Matricula})");
 
-        // =====================
-		// 4. Edição
 		// =====================
-		Console.WriteLine("\n4. EDIÇÃO");
-		Console.WriteLine("===========");
-		pilha.Editar(
-			a => a.Matricula == 3,
-			a => { a.N1 = 8.5; Console.WriteLine($"Nota N1 de {a.Nome} atualizada para 8.5"); }
-		);
-
-		// =====================
-		// 5. Remoção (Pop)
+		// 4. Remoção (Pop)
 		// =====================
 		Console.WriteLine("\n5. REMOÇÃO (Pop - topo)");
 		Console.WriteLine("=========================");
@@ -69,14 +57,7 @@ class Program
 			Console.WriteLine($"Removido: {removido.Nome}");
 
 		// =====================
-		// 6. Remoção específica (nem típico de pilha, mas implementado)
-		// =====================
-		Console.WriteLine("\n6. REMOÇÃO ESPECÍFICA (busca por matrícula 1)");
-		Console.WriteLine("==============================================");
-		pilha.RemoverEspecifico(a => a.Matricula == 1);
-
-		// =====================
-		// 7. Estado final
+		// 5. Estado final
 		// =====================
 		Console.WriteLine("\n7. ESTADO FINAL");
 		Console.WriteLine("================");
@@ -84,7 +65,7 @@ class Program
 		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
         
         // =====================
-		// 8. Removendo até esvaziar
+		// 6. Removendo até esvaziar
 		// =====================
 		Console.WriteLine("\n8. REMOVENDO ATÉ ESVAZIAR (Pop sucessivos)");
 		Console.WriteLine("===========================================");

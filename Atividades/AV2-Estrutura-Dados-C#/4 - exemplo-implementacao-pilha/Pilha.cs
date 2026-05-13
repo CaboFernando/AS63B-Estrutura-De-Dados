@@ -93,46 +93,6 @@ class Pilha<T>
         }
     }
 
-    // Edita um elemento baseado em uma condição (exemplo: busca por matrícula)
-    // NOTA: Esta operação não é típica de pilha, mas foi implementada para atender ao enunciado
-    public void Editar(Func<T, bool> condicao, Action<T> atualizacao)  // -> VALIDAR COM PROFESSOR SE DEVE IMPLEMENTAR (não é típico de pilha, mas pode ser feito)
-    {
-        for (int i = 0; i <= topo; i++)
-        {
-            if (condicao(elementos[i]))
-            {
-                atualizacao(elementos[i]);
-                Console.WriteLine("✓ Elemento atualizado.");
-                return;
-            }
-        }
-        Console.WriteLine("✗ Elemento não encontrado.");
-    }
-
-    // Remove um elemento específico (simulando remoção de meio, típica de lista)
-    // NOTA: Esta operação NÃO é típica de pilha (viola o princípio LIFO).
-    // Foi implementada apenas para atender ao enunciado que pedia "exclusão" genérica.
-    // Em uma pilha real, a remoção deve ser sempre do topo (método Pop).
-    public bool RemoverEspecifico(Func<T, bool> condicao) // -> VALIDAR COM PROFESSOR SE DEVE IMPLEMENTAR (não é típico de pilha, mas pode ser feito)
-    {
-        for (int i = 0; i <= topo; i++)
-        {
-            if (condicao(elementos[i]))
-            {
-                // Remove o elemento e desloca os demais
-                for (int j = i; j < topo; j++)
-                {
-                    elementos[j] = elementos[j + 1];
-                }
-                elementos[topo--] = default(T);  // Libera referência
-                Console.WriteLine($"✓ Elemento removido. Tamanho: {Tamanho()}");
-                return true;
-            }
-        }
-        Console.WriteLine("✗ Elemento não encontrado.");
-        return false;
-    }
-
     // Limpa toda a pilha
     public void Limpar()
     {
