@@ -38,7 +38,8 @@ Cada equipe deverá elaborar uma apresentação abordando os seguintes tópicos:
 2. Sintaxe básica da linguagem;
 3. Exemplo básico de utilização (ex: Hello World);
 4. Exemplo de implementação de uma estrutura de dados do tipo pilha contendo métodos para - inserção, leitura, percorrimento, edição, e exclusão;
-5. Compartilhamento do projeto funcional por meio de um repositório público no GitHub.
+5. Compartilhamento do projeto funcional por meio de um repositório público no GitHub;
+6. Apresentação do conceito de pilhas;
 
 obs: Como pilha ainda não foi ensinado em sala de aula, devermos dar uma passagem pela teoria da mesma.
 
