@@ -55,11 +55,11 @@ class Pilha<T>
         if (EstaVazia())
         {
             Console.WriteLine("✗ Erro: pilha vazia!");
-            return default(T);
+            return default!;
         }
 
         T item = elementos[topo];
-        elementos[topo--] = default(T);  // Libera referência para o GC
+        elementos[topo--] = default!;  // Libera referência para o GC
         Console.WriteLine($"✓ Elemento removido. Tamanho: {Tamanho()}");
         return item;
     }
@@ -70,7 +70,7 @@ class Pilha<T>
         if (EstaVazia())
         {
             Console.WriteLine("✗ Erro: pilha vazia!");
-            return default(T);
+            return default!;
         }
 
         return elementos[topo];
@@ -99,7 +99,7 @@ class Pilha<T>
         // Limpa as referências para o GC
         for (int i = 0; i <= topo; i++)
         {
-            elementos[i] = default(T);
+            elementos[i] = default!;
         }
         topo = -1;
         Console.WriteLine("✓ Pilha limpa.");

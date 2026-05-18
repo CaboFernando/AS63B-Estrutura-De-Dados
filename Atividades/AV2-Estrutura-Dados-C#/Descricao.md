@@ -6,7 +6,7 @@ Professor: Clayton Kossoski | claytonkossoski@utfpr.edu.br
 ---
 
 # ATIVIDADE AVALIATIVA 2
-| **Período de atividade** | 11/05 a 18/05 |
+| **Período de atividade** | 11/05 a 25/05 |
 |------------------------|---------------|
 | **Número de integrantes** | Entre 4 a 5 |
 | **Tema** | Estrutura de dados em outra linguagem |
@@ -86,5 +86,5 @@ dotnet run
 
 ---
 
-**Data da entrega:** 18/05  
+**Data da entrega:** 25/05  
 **Local:** Apresentação ao professor durante a aula

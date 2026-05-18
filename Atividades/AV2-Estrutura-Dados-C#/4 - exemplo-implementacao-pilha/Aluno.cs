@@ -7,7 +7,7 @@ namespace ExemploPilha;
 class Aluno
 {
 	public int Matricula { get; set; }
-	public string Nome { get; set; }
+	public string? Nome { get; set; }
 	public double N1 { get; set; }
 	public double N2 { get; set; }
 	public double N3 { get; set; }
