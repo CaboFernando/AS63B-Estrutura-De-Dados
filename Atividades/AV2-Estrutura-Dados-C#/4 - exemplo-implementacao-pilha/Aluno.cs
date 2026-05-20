@@ -12,7 +12,7 @@ class Aluno
 	public double N2 { get; set; }
 	public double N3 { get; set; }
 
-	public string Get()
+	public string GetAluno()
 	{
 		return $"Matrícula: {Matricula}\nNome: {Nome}\nNotas: {N1} {N2} {N3}";
 	}

@@ -31,30 +31,30 @@ class Program
 		}
 
         // =====================
-		// 2. Percorrimento (Exibir)
+		// 2. Percorrimento (Show)
 		// =====================
-		Console.WriteLine("\n2. PERCORRIMENTO (Exibir)");
+		Console.WriteLine("\n2. PERCORRIMENTO (Show)");
 		Console.WriteLine("==========================");
 		pilha.Show();
-		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
+		Console.WriteLine($"Tamanho da pilha: {pilha.Size()}");
 
         // =====================
 		// 3. Leitura (Peek)
 		// =====================
-		Console.WriteLine("\n3. LEITURA (Peek - topo)");
+		Console.WriteLine("\n3. LEITURA (Peek)");
 		Console.WriteLine("=========================");
 		Aluno topo = pilha.Peek();
 		if (topo != null)
-			Console.WriteLine($"Topo: {topo.Nome} (Matrícula: {topo.Matricula})");
+			Console.WriteLine($"- Topo -\n{topo.GetAluno()}");
 
 		// =====================
 		// 4. Remoção (Pop)
 		// =====================
-		Console.WriteLine("\n5. REMOÇÃO (Pop - topo)");
+		Console.WriteLine("\n5. REMOÇÃO (Pop)");
 		Console.WriteLine("=========================");
 		Aluno removido = pilha.Pop();
 		if (removido != null)
-			Console.WriteLine($"Removido: {removido.Nome}");
+			Console.WriteLine($"- Removido -\n{removido.GetAluno()}");
 
 		// =====================
 		// 5. Estado final
@@ -62,7 +62,7 @@ class Program
 		Console.WriteLine("\n7. ESTADO FINAL");
 		Console.WriteLine("================");
 		pilha.Show();
-		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
+		Console.WriteLine($"Tamanho da pilha: {pilha.Size()}");
         
         // =====================
 		// 6. Removendo toda a pilha (Clear)

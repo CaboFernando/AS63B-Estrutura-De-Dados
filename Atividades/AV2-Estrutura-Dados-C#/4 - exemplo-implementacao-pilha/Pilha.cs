@@ -19,7 +19,7 @@ class Pilha<T>
     }
 
     // Retorna o número de elementos na pilha
-    public int Tamanho()
+    public int Size()
     {
         return topo + 1;
     }
@@ -46,7 +46,7 @@ class Pilha<T>
         }
         
         elementos[++topo] = item;
-        Console.WriteLine($"✓ Elemento inserido. Tamanho: {Tamanho()}");
+        Console.WriteLine($"✓ Elemento inserido. Tamanho: {Size()}");
     }
 
     // Remove e retorna o elemento do topo
@@ -60,7 +60,7 @@ class Pilha<T>
 
         Aluno item = elementos[topo];
         elementos[topo--] = default!;  // Libera referência para o GC
-        Console.WriteLine($"✓ Elemento removido. Tamanho: {Tamanho()}");
+        Console.WriteLine($"✓ Elemento removido. Tamanho: {Size()}");
         return item;
     }
 
@@ -88,7 +88,7 @@ class Pilha<T>
         Console.WriteLine("\n--- Conteúdo da Pilha (topo → base) ---");
         for (int i = topo; i >= 0; i--)
         {
-            Console.WriteLine(elementos[i].Get());
+            Console.WriteLine(elementos[i].GetAluno());
             Console.WriteLine("---");
         }
     }
