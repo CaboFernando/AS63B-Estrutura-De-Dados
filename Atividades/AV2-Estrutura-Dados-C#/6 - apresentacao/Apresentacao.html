@@ -1,889 +1,889 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%233b2c5e'/%3E%3Crect x='25' y='20' width='50' height='12' rx='3' fill='%23ffb347'/%3E%3Crect x='25' y='38' width='50' height='12' rx='3' fill='%23ffb347' opacity='0.8'/%3E%3Crect x='25' y='56' width='50' height='12' rx='3' fill='%23ffb347' opacity='0.6'/%3E%3Ctext x='50' y='88' font-size='24' text-anchor='middle' fill='white' font-family='monospace' font-weight='bold'%3EC%23%3C/text%3E%3C/svg%3E" type="image/svg+xml">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Apresentação - Estrutura de Dados em C# | Pilhas (Stack)</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a2e;
-            overflow-x: hidden;
-        }
-
-        /* Estilo base dos slides - layout responsivo por padrão */
-        .slide {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 5vw;
-            page-break-after: always;
-            break-after: page;
-            position: relative;
-            transition: all 0.2s ease;
-        }
-
-        /* Gradientes melhorados para contraste e suavidade */
-        .slide:nth-child(odd) {
-            background: linear-gradient(135deg, #1e2a6e 0%, #3b2c5e 100%);
-            color: white;
-        }
-
-        .slide:nth-child(even) {
-            background: linear-gradient(135deg, #f0f4fc 0%, #d9e2ef 100%);
-            color: #1e2a3e;
-        }
-
-        .slide-content {
-            max-width: 1300px;
-            width: 100%;
-            margin: 0 auto;
-            animation: fadeInUp 0.5s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
+    <head>
+        <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%233b2c5e'/%3E%3Crect x='25' y='20' width='50' height='12' rx='3' fill='%23ffb347'/%3E%3Crect x='25' y='38' width='50' height='12' rx='3' fill='%23ffb347' opacity='0.8'/%3E%3Crect x='25' y='56' width='50' height='12' rx='3' fill='%23ffb347' opacity='0.6'/%3E%3Ctext x='50' y='88' font-size='24' text-anchor='middle' fill='white' font-family='monospace' font-weight='bold'%3EC%23%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <title>Apresentação - Estrutura de Dados em C# | Pilhas (Stack)</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: #1a1a2e;
+                overflow-x: hidden;
             }
-        }
 
-        /* Tipografia responsiva */
-        h1 {
-            font-size: clamp(2.2rem, 8vw, 4rem);
-            margin-bottom: 0.75em;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: clamp(1.6rem, 6vw, 2.5rem);
-            margin-bottom: 1rem;
-            border-left: 5px solid #e74c3c;
-            padding-left: 20px;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            line-height: 1.3;
-        }
-
-        .slide:nth-child(odd) h2 {
-            border-left-color: #ffb347;
-        }
-
-        h3 {
-            font-size: clamp(1.3rem, 5vw, 1.8rem);
-            margin-bottom: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        /* Listas e parágrafos responsivos */
-        ul, .code-block, p, li {
-            font-size: clamp(0.95rem, 4vw, 1.25rem);
-            line-height: 1.5;
-        }
-
-        ul {
-            margin-left: 1.2rem;
-        }
-
-        li {
-            margin: 0.7rem 0;
-        }
-
-        /* Código responsivo com scroll horizontal - VERSÃO CORRIGIDA */
-        .code-block {
-            background: rgba(0, 0, 0, 0.85);
-            color: #b0ffb0;
-            padding: 1rem;
-            border-radius: 14px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: clamp(0.75rem, 3.5vw, 1rem);
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: pre;
-            word-break: normal;
-            word-wrap: normal;
-            margin: 0.5rem 0;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Layout para blocos de código lado a lado */
-        .code-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .code-grid .code-block {
-            margin: 0;
-            height: 100%;
-            font-size: 0.7rem;
-            padding: 0.75rem;
-        }
-
-        /* Para telas menores que 900px, reduz o padding */
-        @media (max-width: 900px) {
-            .code-grid {
-                gap: 0.75rem;
+            /* Estilo base dos slides - layout responsivo por padrão */
+            .slide {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 40px 5vw;
+                page-break-after: always;
+                break-after: page;
+                position: relative;
+                transition: all 0.2s ease;
             }
-            .code-grid .code-block {
-                font-size: 0.65rem;
-                padding: 0.6rem;
-            }
-        }
 
-        /* Para telas muito pequenas, empilha verticalmente */
-        @media (max-width: 768px) {
-            .code-grid {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
+            /* Gradientes melhorados para contraste e suavidade */
+            .slide:nth-child(odd) {
+                background: linear-gradient(135deg, #1e2a6e 0%, #3b2c5e 100%);
+                color: white;
             }
-            .code-grid .code-block {
-                font-size: 0.75rem;
-                padding: 0.75rem;
+
+            .slide:nth-child(even) {
+                background: linear-gradient(135deg, #f0f4fc 0%, #d9e2ef 100%);
+                color: #1e2a3e;
             }
+
+            .slide-content {
+                max-width: 1300px;
+                width: 100%;
+                margin: 0 auto;
+                animation: fadeInUp 0.5s ease-out;
+            }
+
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(25px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Tipografia responsiva */
+            h1 {
+                font-size: clamp(2.2rem, 8vw, 4rem);
+                margin-bottom: 0.75em;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: clamp(1.6rem, 6vw, 2.5rem);
+                margin-bottom: 1rem;
+                border-left: 5px solid #e74c3c;
+                padding-left: 20px;
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 12px;
+                line-height: 1.3;
+            }
+
+            .slide:nth-child(odd) h2 {
+                border-left-color: #ffb347;
+            }
+
+            h3 {
+                font-size: clamp(1.3rem, 5vw, 1.8rem);
+                margin-bottom: 0.8rem;
+                margin-top: 1rem;
+            }
+
+            /* Listas e parágrafos responsivos */
+            ul, .code-block, p, li {
+                font-size: clamp(0.95rem, 4vw, 1.25rem);
+                line-height: 1.5;
+            }
+
+            ul {
+                margin-left: 1.2rem;
+            }
+
+            li {
+                margin: 0.7rem 0;
+            }
+
+            /* Código responsivo com scroll horizontal - VERSÃO CORRIGIDA */
             .code-block {
-                font-size: 0.75rem;
+                background: rgba(0, 0, 0, 0.85);
+                color: #b0ffb0;
+                padding: 1rem;
+                border-radius: 14px;
+                font-family: 'Consolas', 'Courier New', monospace;
+                font-size: clamp(0.75rem, 3.5vw, 1rem);
+                overflow-x: auto;
+                overflow-y: hidden;
+                white-space: pre;
+                word-break: normal;
+                word-wrap: normal;
+                margin: 0.5rem 0;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Layout para blocos de código lado a lado */
+            .code-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .code-grid .code-block {
+                margin: 0;
+                height: 100%;
+                font-size: 0.7rem;
                 padding: 0.75rem;
             }
-        }
 
-        /* Títulos para cada bloco de código */
-        .code-block[data-title]::before {
-            content: attr(data-title);
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #ffb347;
-            font-size: 0.85rem;
-            padding-bottom: 0.3rem;
-        }
+            /* Para telas menores que 900px, reduz o padding */
+            @media (max-width: 900px) {
+                .code-grid {
+                    gap: 0.75rem;
+                }
+                .code-grid .code-block {
+                    font-size: 0.65rem;
+                    padding: 0.6rem;
+                }
+            }
 
-        .slide:nth-child(even) .code-block {
-            background: #1f2a3e;
-            color: #9bff9b;
-            border: 1px solid #4a6172;
-            white-space: pre;
-            word-break: normal;
-            word-wrap: normal;
-        }
+            /* Para telas muito pequenas, empilha verticalmente */
+            @media (max-width: 768px) {
+                .code-grid {
+                    grid-template-columns: 1fr;
+                    gap: 0.75rem;
+                }
+                .code-grid .code-block {
+                    font-size: 0.75rem;
+                    padding: 0.75rem;
+                }
+                .code-block {
+                    font-size: 0.75rem;
+                    padding: 0.75rem;
+                }
+            }
 
-        .slide:nth-child(even) .code-block[data-title]::before {
-            color: #ffb347;
-            border-bottom-color: rgba(255,255,255,0.2);
-        }
-
-        /* Tabelas responsivas - scroll horizontal se necessário */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: clamp(0.8rem, 3.5vw, 1.1rem);
-            margin: 1.2rem 0;
-            display: block;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
-        
-        @media (max-width: 768px) {
-            table {
-                white-space: normal;
-                display: table;
+            /* Títulos para cada bloco de código */
+            .code-block[data-title]::before {
+                content: attr(data-title);
+                display: block;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                color: #ffb347;
                 font-size: 0.85rem;
+                padding-bottom: 0.3rem;
             }
+
+            .slide:nth-child(even) .code-block {
+                background: #1f2a3e;
+                color: #9bff9b;
+                border: 1px solid #4a6172;
+                white-space: pre;
+                word-break: normal;
+                word-wrap: normal;
+            }
+
+            .slide:nth-child(even) .code-block[data-title]::before {
+                color: #ffb347;
+                border-bottom-color: rgba(255,255,255,0.2);
+            }
+
+            /* Tabelas responsivas - scroll horizontal se necessário */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+                margin: 1.2rem 0;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            @media (max-width: 768px) {
+                table {
+                    white-space: normal;
+                    display: table;
+                    font-size: 0.85rem;
+                }
+                th, td {
+                    padding: 8px 6px;
+                    word-break: break-word;
+                }
+            }
+
             th, td {
-                padding: 8px 6px;
-                word-break: break-word;
+                border: 2px solid currentColor;
+                padding: 12px 14px;
+                text-align: left;
+                vertical-align: top;
             }
-        }
 
-        th, td {
-            border: 2px solid currentColor;
-            padding: 12px 14px;
-            text-align: left;
-            vertical-align: top;
-        }
+            th {
+                background: rgba(0, 0, 0, 0.15);
+                font-weight: 600;
+            }
 
-        th {
-            background: rgba(0, 0, 0, 0.15);
-            font-weight: 600;
-        }
+            /* Badges e cards responsivos */
+            .badge {
+                display: inline-block;
+                background: #e74c3c;
+                color: white;
+                padding: 5px 16px;
+                border-radius: 40px;
+                font-size: clamp(0.7rem, 3vw, 1rem);
+                margin: 5px 8px 5px 0;
+                font-weight: 500;
+            }
 
-        /* Badges e cards responsivos */
-        .badge {
-            display: inline-block;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 16px;
-            border-radius: 40px;
-            font-size: clamp(0.7rem, 3vw, 1rem);
-            margin: 5px 8px 5px 0;
-            font-weight: 500;
-        }
+            /* Grid responsivo para cards da equipe e aplicações */
+            .team-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 1.2rem;
+                margin-top: 2rem;
+            }
 
-        /* Grid responsivo para cards da equipe e aplicações */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.2rem;
-            margin-top: 2rem;
-        }
+            .team-card {
+                background: rgba(255,255,255,0.12);
+                backdrop-filter: blur(4px);
+                padding: 1.2rem;
+                border-radius: 20px;
+                text-align: center;
+                transition: transform 0.2s, background 0.2s;
+                font-size: clamp(0.85rem, 3.5vw, 1rem);
+                font-weight: 500;
+                border: 1px solid rgba(255,255,255,0.2);
+            }
 
-        .team-card {
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(4px);
-            padding: 1.2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: transform 0.2s, background 0.2s;
-            font-size: clamp(0.85rem, 3.5vw, 1rem);
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
+            .slide:nth-child(even) .team-card {
+                background: rgba(0,0,0,0.05);
+                border: 1px solid rgba(0,0,0,0.1);
+                color: #1e2a3e;
+            }
 
-        .slide:nth-child(even) .team-card {
-            background: rgba(0,0,0,0.05);
-            border: 1px solid rgba(0,0,0,0.1);
-            color: #1e2a3e;
-        }
+            .team-card:hover {
+                transform: translateY(-5px);
+                background: rgba(255,255,255,0.2);
+            }
 
-        .team-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Layout para conceito pilha / diagrama responsivo */
-        .flex-pilha {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-            justify-content: center;
-        }
-        .pilha-visual {
-            flex: 1;
-            min-width: 180px;
-            text-align: center;
-        }
-        .pilha-lista {
-            flex: 1.5;
-            min-width: 200px;
-        }
-        .stack-demo {
-            background: #1f2937;
-            padding: 1.2rem;
-            border-radius: 20px;
-            display: inline-block;
-            width: 100%;
-            max-width: 260px;
-            margin: 0 auto;
-        }
-        .stack-item {
-            padding: 10px 8px;
-            margin: 8px auto;
-            border-radius: 12px;
-            font-weight: bold;
-            text-align: center;
-            width: 90%;
-            font-size: 1rem;
-        }
-
-        /* Navegação mobile via botões flutuantes - melhor experiência touch */
-        .nav-controls {
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            z-index: 1000;
-            pointer-events: none;
-        }
-        .nav-btn {
-            pointer-events: auto;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(12px);
-            border: none;
-            color: white;
-            font-size: 1.3rem;
-            padding: 10px 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.2s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            font-family: inherit;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-        .nav-btn:hover {
-            background: #e74c3c;
-            transform: scale(1.02);
-        }
-        @media (max-width: 640px) {
-            .nav-btn {
-                padding: 6px 14px;
+            /* Layout para conceito pilha / diagrama responsivo */
+            .flex-pilha {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 2rem;
+                justify-content: center;
+            }
+            .pilha-visual {
+                flex: 1;
+                min-width: 180px;
+                text-align: center;
+            }
+            .pilha-lista {
+                flex: 1.5;
+                min-width: 200px;
+            }
+            .stack-demo {
+                background: #1f2937;
+                padding: 1.2rem;
+                border-radius: 20px;
+                display: inline-block;
+                width: 100%;
+                max-width: 260px;
+                margin: 0 auto;
+            }
+            .stack-item {
+                padding: 10px 8px;
+                margin: 8px auto;
+                border-radius: 12px;
+                font-weight: bold;
+                text-align: center;
+                width: 90%;
                 font-size: 1rem;
             }
-        }
-        .slide-number {
-            position: absolute;
-            bottom: 18px;
-            right: 25px;
-            font-size: clamp(0.7rem, 3vw, 0.85rem);
-            opacity: 0.65;
-            background: rgba(0,0,0,0.3);
-            padding: 4px 10px;
-            border-radius: 30px;
-            backdrop-filter: blur(4px);
-        }
-        /* Indicador de progresso e posição para mobile */
-        .progress-dots {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 1001;
-            background: rgba(0,0,0,0.5);
-            padding: 5px 12px;
-            border-radius: 40px;
-            backdrop-filter: blur(8px);
-            pointer-events: none;
-        }
-        .dot {
-            width: 8px;
-            height: 8px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
-        .dot.active {
-            background: white;
-            width: 20px;
-            border-radius: 10px;
-        }
-        @media (min-width: 1024px) {
-            .progress-dots, .nav-controls {
-                display: none;
+
+            /* Navegação mobile via botões flutuantes - melhor experiência touch */
+            .nav-controls {
+                position: fixed;
+                bottom: 20px;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                z-index: 1000;
+                pointer-events: none;
             }
-        }
-        /* Ajustes adicionais para espaçamento e botão GitHub */
-        .repo-link {
-            word-break: break-all;
-            font-size: clamp(0.7rem, 3vw, 0.9rem);
-        }
-        a {
-            color: #ffd966;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .slide:nth-child(even) a {
-            color: #2c5282;
-        }
-        footer {
-            font-size: 0.8rem;
-        }
-        /* correções para elementos internos */
-        .inline-svg {
-            width: 1.8em;
-            height: 1.8em;
-            vertical-align: middle;
-        }
-    </style>
-</head>
-<body>
-
-<div class="slides-container" id="slidesContainer">
-    <!-- SLIDE 1 - CAPA -->
-    <div class="slide">
-        <div class="slide-content" style="text-align: center;">
-            <h1>📚 Estrutura de Dados em C#</h1>
-            <h2 style="border: none; font-size: clamp(1.8rem, 6vw, 2.5rem); justify-content: center;">Pilhas (Stack)</h2>
-            <div style="margin-top: 2rem;">
-                <p style="font-size: clamp(1rem, 5vw, 1.4rem);"><strong>Atividade Avaliativa 2</strong></p>
-                <p style="margin-top: 1rem; font-size: clamp(0.85rem, 4vw, 1.1rem);">Tecnologia em Análise e Desenvolvimento de Sistemas – UTFPR</p>
-                <p style="font-size: clamp(0.85rem, 4vw, 1.1rem);">Professor: Clayton Kossoski</p>
-            </div>
-            <div class="team-grid" style="margin-top: 2.5rem; max-width: 750px; margin-left: auto; margin-right: auto;">
-                <div class="team-card">Carlos Fernando dos Santos<br><small>RA 1692984</small></div>
-                <div class="team-card">Maria Carolyne Nogueira<br><small>RA 2706490</small></div>
-                <div class="team-card">Rayssa da Silva Esparza Okamura<br><small>RA 2706547</small></div>
-                <div class="team-card">Fernando de Souza<br><small>RA 2623374</small></div>
-            </div>
-            <p style="margin-top: 2rem; font-size: 0.9rem;">Maio/2026</p>
-        </div>
-        <div class="slide-number">1 / 16</div>
-    </div>
-
-    <!-- SLIDE 2: Roteiro -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>📋 Roteiro da Apresentação</h2>
-            <ul>
-                <li>✅ Configuração do ambiente C# (.NET)</li>
-                <li>✅ Sintaxe básica da linguagem</li>
-                <li>✅ Exemplo Hello World</li>
-                <li>✅ Conceito de Pilhas (LIFO)</li>
-                <li>✅ Implementação de Pilha em C# (CRUD)</li>
-                <li>✅ Demonstração do projeto no GitHub</li>
-                <li>✅ Curiosidades sobre o C#</li>
-                <li>✅ Considerações finais</li>
-            </ul>
-        </div>
-        <div class="slide-number">2 / 16</div>
-    </div>
-
-    <!-- SLIDE 3: Configuração Windows -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1.2em; height: 1.2em; display: inline-block; vertical-align: middle;"><path d="M3 3L11 4.5V11.5H3V3Z" fill="currentColor"/><path d="M13 4.5L21 3V11.5H13V4.5Z" fill="currentColor"/><path d="M3 13L11 14.5V21H3V13Z" fill="currentColor"/><path d="M13 14.5L21 13V21H13V14.5Z" fill="currentColor"/></svg> Configuração do Ambiente – Windows</h2>
-            <ul>
-                <li>📥 Baixar .NET SDK em <strong>dotnet.microsoft.com</strong></li>
-                <li>🔧 Verificar instalação:
-                    <div class="code-block">dotnet --version<br>dotnet --info</div>
-                </li>
-                <li>📝 Editor: <strong>Visual Studio Code</strong> + extensão C#</li>
-                <li>🚀 Criar primeiro projeto:
-                    <div class="code-block">dotnet new console -o MeuHelloWorld<br>cd MeuHelloWorld<br>dotnet run</div>
-                </li>
-            </ul>
-        </div>
-        <div class="slide-number">3 / 16</div>
-    </div>
-
-    <!-- SLIDE 4: Ubuntu -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>🐧 Configuração – Ubuntu 24.04</h2>
-            <ul>
-                <li>📦 Adicionar repositório Microsoft:
-                    <div class="code-block">wget https://packages.microsoft.com/config/ubuntu/24.04/packages-microsoft-prod.deb<br>sudo dpkg -i packages-microsoft-prod.deb</div>
-                </li>
-                <li>🔧 Instalar .NET SDK:
-                    <div class="code-block">sudo apt install dotnet-sdk-10.0</div>
-                </li>
-                <li>💻 VS Code via Snap:
-                    <div class="code-block">sudo snap install --classic code</div>
-                </li>
-                <li>✅ Mesmos comandos: <strong>dotnet new, dotnet run</strong></li>
-            </ul>
-        </div>
-        <div class="slide-number">4 / 16</div>
-    </div>
-
-    <!-- SLIDE 5: Sintaxe básica -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>📝 Sintaxe Básica do C#</h2>
-            <div class="code-block">
-                using System;
-                
-                class Program
-                {
-                    static void Main(string[] args)
-                    {
-                        Console.WriteLine("Olá, C#!");
-                    }
+            .nav-btn {
+                pointer-events: auto;
+                background: rgba(0,0,0,0.7);
+                backdrop-filter: blur(12px);
+                border: none;
+                color: white;
+                font-size: 1.3rem;
+                padding: 10px 18px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-weight: bold;
+                transition: 0.2s;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                font-family: inherit;
+                border: 1px solid rgba(255,255,255,0.3);
+            }
+            .nav-btn:hover {
+                background: #e74c3c;
+                transform: scale(1.02);
+            }
+            @media (max-width: 640px) {
+                .nav-btn {
+                    padding: 6px 14px;
+                    font-size: 1rem;
                 }
-            </div>
-            <ul>
-                <li><strong>using</strong> → importa bibliotecas</li>
-                <li><strong>class</strong> → define uma classe</li>
-                <li><strong>static void Main</strong> → ponto de entrada</li>
-                <li><strong>Console.WriteLine</strong> → saída no terminal</li>
-            </ul>
-        </div>
-        <div class="slide-number">5 / 16</div>
-    </div>
+            }
+            .slide-number {
+                position: absolute;
+                bottom: 18px;
+                right: 25px;
+                font-size: clamp(0.7rem, 3vw, 0.85rem);
+                opacity: 0.65;
+                background: rgba(0,0,0,0.3);
+                padding: 4px 10px;
+                border-radius: 30px;
+                backdrop-filter: blur(4px);
+            }
+            /* Indicador de progresso e posição para mobile */
+            .progress-dots {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 8px;
+                z-index: 1001;
+                background: rgba(0,0,0,0.5);
+                padding: 5px 12px;
+                border-radius: 40px;
+                backdrop-filter: blur(8px);
+                pointer-events: none;
+            }
+            .dot {
+                width: 8px;
+                height: 8px;
+                background: rgba(255,255,255,0.5);
+                border-radius: 50%;
+                transition: all 0.2s;
+            }
+            .dot.active {
+                background: white;
+                width: 20px;
+                border-radius: 10px;
+            }
+            @media (min-width: 1024px) {
+                .progress-dots, .nav-controls {
+                    display: none;
+                }
+            }
+            /* Ajustes adicionais para espaçamento e botão GitHub */
+            .repo-link {
+                word-break: break-all;
+                font-size: clamp(0.7rem, 3vw, 0.9rem);
+            }
+            a {
+                color: #ffd966;
+                text-decoration: none;
+                font-weight: 500;
+            }
+            .slide:nth-child(even) a {
+                color: #2c5282;
+            }
+            footer {
+                font-size: 0.8rem;
+            }
+            /* correções para elementos internos */
+            .inline-svg {
+                width: 1.8em;
+                height: 1.8em;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
 
-    <!-- SLIDE 6: variáveis e decisão -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>🔤 Variáveis, Entrada e Decisão</h2>
-            <div class="code-block">
-                int idade = 20;
-                string nome = "Ana";
-                
-                Console.Write("Digite sua idade: ");
-                idade = int.Parse(Console.ReadLine());
-                
-                if (idade >= 18)
-                    Console.WriteLine("Maior de idade");
-                else
-                    Console.WriteLine("Menor de idade");
-            </div>
-        </div>
-        <div class="slide-number">6 / 16</div>
-    </div>
-
-    <!-- SLIDE 7: Hello World -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>👋 Hello World no C#</h2>
-            <ul>
-                <li>📁 Criado na pasta <code>3 - exemplo-basico-hello-world/</code></li>
-                <li>⚡ Comando: <code>dotnet new console</code></li>
-                <li>📄 Arquivo <code>Program.cs</code>:</li>
-            </ul>
-            <div class="code-block">
-                Console.WriteLine("Hello, World!");
-            </div>
-            <ul>
-                <li>▶️ Execução: <code>dotnet run</code></li>
-                <li>🎯 Saída: <strong>Hello, World!</strong></li>
-            </ul>
-        </div>
-        <div class="slide-number">7 / 16</div>
-    </div>
-
-    <!-- SLIDE 8: Conceito Pilhas LIFO interativo-->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>📚 Conceito de Pilhas (LIFO)</h2>
-            <div class="flex-pilha">
-                <div class="pilha-lista">
-                    <ul>
-                        <li><strong>Pilha</strong> = estrutura onde o <span style="color: #ffb347; font-weight: bold;">último que entra é o primeiro que sai</span></li>
-                        <li>📖 Regra: <strong>LIFO</strong> – Last In, First Out</li>
-                        <li>🥞 Exemplo físico: pilha de pratos, livros</li>
-                    </ul>
+    <div class="slides-container" id="slidesContainer">
+        <!-- SLIDE 1 - CAPA -->
+        <div class="slide">
+            <div class="slide-content" style="text-align: center;">
+                <h1>📚 Estrutura de Dados em C#</h1>
+                <h2 style="border: none; font-size: clamp(1.8rem, 6vw, 2.5rem); justify-content: center;">Pilhas (Stack)</h2>
+                <div style="margin-top: 2rem;">
+                    <p style="font-size: clamp(1rem, 5vw, 1.4rem);"><strong>Atividade Avaliativa 2</strong></p>
+                    <p style="margin-top: 1rem; font-size: clamp(0.85rem, 4vw, 1.1rem);">Tecnologia em Análise e Desenvolvimento de Sistemas – UTFPR</p>
+                    <p style="font-size: clamp(0.85rem, 4vw, 1.1rem);">Professor: Clayton Kossoski</p>
                 </div>
-                <div class="pilha-visual">
-                    <div class="stack-demo" style="background: #1e2a36;">
-                        <div class="stack-item" style="background: #f39c12; color: #1a1a2e; border: 2px solid #ffd966;">🔝 TOPO → C (último)</div>
-                        <div class="stack-item" style="background: #2980b9; color: white;">B</div>
-                        <div class="stack-item" style="background: #27ae60; color: white;">A (primeiro)</div>
-                        <p style="margin-top: 12px; color: #ddd; font-size: 0.85rem;"> O último a entrar (C) sai primeiro</p>
+                <div class="team-grid" style="margin-top: 2.5rem; max-width: 750px; margin-left: auto; margin-right: auto;">
+                    <div class="team-card">Carlos Fernando dos Santos<br><small>RA 1692984</small></div>
+                    <div class="team-card">Maria Carolyne Nogueira<br><small>RA 2706490</small></div>
+                    <div class="team-card">Rayssa da Silva Esparza Okamura<br><small>RA 2706547</small></div>
+                    <div class="team-card">Fernando de Souza<br><small>RA 2623374</small></div>
+                </div>
+                <p style="margin-top: 2rem; font-size: 0.9rem;">Maio/2026</p>
+            </div>
+            <div class="slide-number">1 / 16</div>
+        </div>
+
+        <!-- SLIDE 2: Roteiro -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📋 Roteiro da Apresentação</h2>
+                <ul>
+                    <li>✅ Configuração do ambiente C# (.NET)</li>
+                    <li>✅ Sintaxe básica da linguagem</li>
+                    <li>✅ Exemplo Hello World</li>
+                    <li>✅ Conceito de Pilhas (LIFO)</li>
+                    <li>✅ Implementação de Pilha em C# (CRUD)</li>
+                    <li>✅ Demonstração do projeto no GitHub</li>
+                    <li>✅ Curiosidades sobre o C#</li>
+                    <li>✅ Considerações finais</li>
+                </ul>
+            </div>
+            <div class="slide-number">2 / 16</div>
+        </div>
+
+        <!-- SLIDE 3: Configuração Windows -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 1.2em; height: 1.2em; display: inline-block; vertical-align: middle;"><path d="M3 3L11 4.5V11.5H3V3Z" fill="currentColor"/><path d="M13 4.5L21 3V11.5H13V4.5Z" fill="currentColor"/><path d="M3 13L11 14.5V21H3V13Z" fill="currentColor"/><path d="M13 14.5L21 13V21H13V14.5Z" fill="currentColor"/></svg> Configuração do Ambiente – Windows</h2>
+                <ul>
+                    <li>📥 Baixar .NET SDK em <strong>dotnet.microsoft.com</strong></li>
+                    <li>🔧 Verificar instalação:
+                        <div class="code-block">dotnet --version<br>dotnet --info</div>
+                    </li>
+                    <li>📝 Editor: <strong>Visual Studio Code</strong> + extensão C#</li>
+                    <li>🚀 Criar primeiro projeto:
+                        <div class="code-block">dotnet new console -o MeuHelloWorld<br>cd MeuHelloWorld<br>dotnet run</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="slide-number">3 / 16</div>
+        </div>
+
+        <!-- SLIDE 4: Ubuntu -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🐧 Configuração – Ubuntu 24.04</h2>
+                <ul>
+                    <li>📦 Adicionar repositório Microsoft:
+                        <div class="code-block">wget https://packages.microsoft.com/config/ubuntu/24.04/packages-microsoft-prod.deb<br>sudo dpkg -i packages-microsoft-prod.deb</div>
+                    </li>
+                    <li>🔧 Instalar .NET SDK:
+                        <div class="code-block">sudo apt install dotnet-sdk-10.0</div>
+                    </li>
+                    <li>💻 VS Code via Snap:
+                        <div class="code-block">sudo snap install --classic code</div>
+                    </li>
+                    <li>✅ Mesmos comandos: <strong>dotnet new, dotnet run</strong></li>
+                </ul>
+            </div>
+            <div class="slide-number">4 / 16</div>
+        </div>
+
+        <!-- SLIDE 5: Sintaxe básica -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📝 Sintaxe Básica do C#</h2>
+                <div class="code-block">
+                    using System;
+                    
+                    class Program
+                    {
+                        static void Main(string[] args)
+                        {
+                            Console.WriteLine("Olá, C#!");
+                        }
+                    }
+                </div>
+                <ul>
+                    <li><strong>using</strong> → importa bibliotecas</li>
+                    <li><strong>class</strong> → define uma classe</li>
+                    <li><strong>static void Main</strong> → ponto de entrada</li>
+                    <li><strong>Console.WriteLine</strong> → saída no terminal</li>
+                </ul>
+            </div>
+            <div class="slide-number">5 / 16</div>
+        </div>
+
+        <!-- SLIDE 6: variáveis e decisão -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔤 Variáveis, Entrada e Decisão</h2>
+                <div class="code-block">
+                    int idade = 20;
+                    string nome = "Ana";
+                    
+                    Console.Write("Digite sua idade: ");
+                    idade = int.Parse(Console.ReadLine());
+                    
+                    if (idade >= 18)
+                        Console.WriteLine("Maior de idade");
+                    else
+                        Console.WriteLine("Menor de idade");
+                </div>
+            </div>
+            <div class="slide-number">6 / 16</div>
+        </div>
+
+        <!-- SLIDE 7: Hello World -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>👋 Hello World no C#</h2>
+                <ul>
+                    <li>📁 Criado na pasta <code>3 - exemplo-basico-hello-world/</code></li>
+                    <li>⚡ Comando: <code>dotnet new console</code></li>
+                    <li>📄 Arquivo <code>Program.cs</code>:</li>
+                </ul>
+                <div class="code-block">
+                    Console.WriteLine("Hello, World!");
+                </div>
+                <ul>
+                    <li>▶️ Execução: <code>dotnet run</code></li>
+                    <li>🎯 Saída: <strong>Hello, World!</strong></li>
+                </ul>
+            </div>
+            <div class="slide-number">7 / 16</div>
+        </div>
+
+        <!-- SLIDE 8: Conceito Pilhas LIFO interativo-->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📚 Conceito de Pilhas (LIFO)</h2>
+                <div class="flex-pilha">
+                    <div class="pilha-lista">
+                        <ul>
+                            <li><strong>Pilha</strong> = estrutura onde o <span style="color: #ffb347; font-weight: bold;">último que entra é o primeiro que sai</span></li>
+                            <li>📖 Regra: <strong>LIFO</strong> – Last In, First Out</li>
+                            <li>🥞 Exemplo físico: pilha de pratos, livros</li>
+                        </ul>
+                    </div>
+                    <div class="pilha-visual">
+                        <div class="stack-demo" style="background: #1e2a36;">
+                            <div class="stack-item" style="background: #f39c12; color: #1a1a2e; border: 2px solid #ffd966;">🔝 TOPO → C (último)</div>
+                            <div class="stack-item" style="background: #2980b9; color: white;">B</div>
+                            <div class="stack-item" style="background: #27ae60; color: white;">A (primeiro)</div>
+                            <p style="margin-top: 12px; color: #ddd; font-size: 0.85rem;"> O último a entrar (C) sai primeiro</p>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="slide-number">8 / 16</div>
         </div>
-        <div class="slide-number">8 / 16</div>
-    </div>
 
-    <!-- SLIDE 9: onde usamos pilhas? Grid responsivo 2 col-->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>🏢 Onde usamos pilhas no dia a dia?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
-                <div class="team-card">✅ Botão <strong>"desfazer"</strong> (Ctrl+Z)</div>
-                <div class="team-card">🌐 <strong>Histórico</strong> de navegação</div>
-                <div class="team-card">📞 <strong>Chamadas de funções</strong> em programação</div>
-                <div class="team-card">🧮 <strong>Verificação</strong> de expressões matemáticas</div>
-                <div class="team-card">⬅️ Voltar etapas em um sistema</div>
-                <div class="team-card">📱 Navegação entre telas (Back stack)</div>
+        <!-- SLIDE 9: onde usamos pilhas? -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🏢 Onde usamos pilhas no dia a dia?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
+                    <div class="team-card">✅ Botão <strong>"desfazer"</strong> (Ctrl+Z)</div>
+                    <div class="team-card">🌐 <strong>Histórico</strong> de navegação</div>
+                    <div class="team-card">📞 <strong>Chamadas de funções</strong> em programação</div>
+                    <div class="team-card">🧮 <strong>Verificação</strong> de expressões matemáticas</div>
+                    <div class="team-card">⬅️ Voltar etapas em um sistema</div>
+                    <div class="team-card">📱 Navegação entre telas (Back stack)</div>
+                </div>
             </div>
+            <div class="slide-number">9 / 16</div>
         </div>
-        <div class="slide-number">9 / 16</div>
-    </div>
 
-    <!-- SLIDE 10: operações da pilha tabela responsiva -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>⚙️ Operações básicas da pilha</h2>
-            <table>
-                <thead><tr><th>Operação</th><th>Descrição</th><th>Exemplo</th></tr></thead>
-                <tbody>
-                    <tr><td><strong>Push</strong> (empilhar)</td><td>Insere no topo</td><td>push(30) → 30 no topo</td></tr>
-                    <tr><td><strong>Pop</strong> (desempilhar)</td><td>Remove do topo</td><td>pop() → remove 30</td></tr>
-                    <tr><td><strong>Peek / Top</strong></td><td>Mostra o topo sem remover</td><td>peek() → retorna 30</td></tr>
-                    <tr><td><strong>IsEmpty</strong></td><td>Verifica se está vazia</td><td>isEmpty() → true/false</td></tr>
-                </tbody>
-            </table>
+        <!-- SLIDE 10: operações da pilha tabela responsiva -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>⚙️ Operações básicas da pilha</h2>
+                <table>
+                    <thead><tr><th>Operação</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Push</strong> (empilhar)</td><td>Insere no topo</td><td>push(30) → 30 no topo</td></tr>
+                        <tr><td><strong>Pop</strong> (desempilhar)</td><td>Remove do topo</td><td>pop() → remove 30</td></tr>
+                        <tr><td><strong>Peek / Top</strong></td><td>Mostra o topo sem remover</td><td>peek() → retorna 30</td></tr>
+                        <tr><td><strong>IsEmpty</strong></td><td>Verifica se está vazia</td><td>isEmpty() → true/false</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-number">10 / 16</div>
         </div>
-        <div class="slide-number">10 / 16</div>
-    </div>
 
-    <!-- SLIDE 11: Comparação com listas -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>📊 Comparação com listas</h2>
-            <table>
-                <thead><tr><th>Estrutura</th><th>Acesso</th><th>Crescimento</th><th>Flexibilidade</th></tr></thead>
-                <tbody>
-                    <tr><td>Lista estática</td><td>Por índice (qualquer posição)</td><td>Fixo (vetor)</td><td>Baixa</td></tr>
-                    <tr><td>Lista dinâmica</td><td>Por índice/percurso</td><td>Dinâmico (nós)</td><td>Alta</td></tr>
-                    <tr style="background: rgba(46,204,113,0.15);"><td>Pilha</td><td>Apenas o topo</td><td>Depende da impl.</td><td>Controlada (LIFO)</td></tr>
-                </tbody>
-            </table>
-            <p style="margin-top: 1rem;"><strong>💡 Diferença principal:</strong> Na pilha, <strong style="color:#2ecc71;">SÓ o topo pode ser acessado</strong>!</p>
+        <!-- SLIDE 11: Comparação com listas -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📊 Comparação com listas</h2>
+                <table>
+                    <thead><tr><th>Estrutura</th><th>Acesso</th><th>Crescimento</th><th>Flexibilidade</th></tr></thead>
+                    <tbody>
+                        <tr><td>Lista estática</td><td>Por índice (qualquer posição)</td><td>Fixo (vetor)</td><td>Baixa</td></tr>
+                        <tr><td>Lista dinâmica</td><td>Por índice/percurso</td><td>Dinâmico (nós)</td><td>Alta</td></tr>
+                        <tr style="background: rgba(46,204,113,0.15);"><td>Pilha</td><td>Apenas o topo</td><td>Depende da impl.</td><td>Controlada (LIFO)</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem;"><strong>💡 Diferença principal:</strong> Na pilha, <strong style="color:#2ecc71;">SÓ o topo pode ser acessado</strong>!</p>
+            </div>
+            <div class="slide-number">11 / 16</div>
         </div>
-        <div class="slide-number">11 / 16</div>
-    </div>
 
-    <!-- SLIDE 12: Implementação da Pilha - COM BLOCOS LADO A LADO -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>💻 Implementação da Pilha em C#</h2>
-            <ul>
-                <li>📁 Pasta: <code>4 - exemplo-implementacao-pilha/</code></li>
-                <li>📄 Arquivos: <strong>Aluno.cs</strong>, <strong>Pilha.cs</strong>, <strong>Program.cs</strong></li>
-                <li>🏷️ Classe <strong>Aluno</strong> → armazena matrícula, nome e 3 notas</li>
-                <li>📦 Classe <strong>Pilha&lt;T&gt;</strong> → genérica, implementa array fixo com capacidade padrão = 100</li>
-                <li>▶️ Classe <strong>Program</strong> → classe principal onde fazemos as chamadas dos métodos da pilha</li>
-            </ul>
-            
-            <div class="code-grid">
-                <div class="code-block" data-title="📄 Aluno.cs">
-                namespace ExemploPilha;
+        <!-- SLIDE 12: Implementação da Pilha -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>💻 Implementação da Pilha em C#</h2>
+                <ul>
+                    <li>📁 Pasta: <code>4 - exemplo-implementacao-pilha/</code></li>
+                    <li>📄 Arquivos: <strong>Aluno.cs</strong>, <strong>Pilha.cs</strong>, <strong>Program.cs</strong></li>
+                    <li>🏷️ Classe <strong>Aluno</strong> → armazena matrícula, nome e 3 notas</li>
+                    <li>📦 Classe <strong>Pilha&lt;T&gt;</strong> → genérica, implementa array fixo com capacidade padrão = 100</li>
+                    <li>▶️ Classe <strong>Program</strong> → classe principal onde fazemos as chamadas dos métodos da pilha</li>
+                </ul>
+                
+                <div class="code-grid">
+                    <div class="code-block" data-title="📄 Aluno.cs">
+                    namespace ExemploPilha;
 
-                class Aluno
-                {
-                    public int Matricula { get; set; }
-                    public string? Nome { get; set; }
-                    public double N1 { get; set; }
-                    public double N2 { get; set; }
-                    public double N3 { get; set; }
-
-                    public string GetAluno()
+                    class Aluno
                     {
-                        return $"Matrícula: {Matricula}\nNome: {Nome}\nNotas: {N1} {N2} {N3}";
+                        public int Matricula { get; set; }
+                        public string? Nome { get; set; }
+                        public double N1 { get; set; }
+                        public double N2 { get; set; }
+                        public double N3 { get; set; }
+
+                        public string GetAluno()
+                        {
+                            return $"Matrícula: {Matricula}\nNome: {Nome}\nNotas: {N1} {N2} {N3}";
+                        }
+                    }</div>
+                    
+                    <div class="code-block" data-title="📦 Pilha.cs">
+                    namespace ExemploPilha;
+
+                    class Pilha&lt;T&gt;
+                    {
+                        private Aluno[] elementos;
+                        private int topo;
+                        private const int CAPACIDADE_PADRAO = 100;
+                        public Pilha(int capacidade = CAPACIDADE_PADRAO){...}
+                        public int Size(){...}
+                        public bool IsEmpty(){...}
+                        private bool IsNotEmpty(){...}
+                        public void Push(Aluno item){...}
+                        public Aluno Pop(){...}
+                        public Aluno Peek(){...}
+                        public void Show(){...}
+                        public void Clear(){...}
+                    }</div>
+                    
+                    <div class="code-block" data-title="▶️ Program.cs">
+                    namespace ExemploPilha;
+
+                    class Program {
+                        static void Main(string[] args) {
+                            Pilha<Aluno> pilha = new Pilha<Aluno>();
+                            Aluno[] alunos = { new Aluno { Matricula = 2, Nome = "André", N1 = 9.5, N2 = 7.8, N3 = 8.5 } };
+
+                            pilha.Push(alunos[0]);
+                            pilha.Show();
+
+                            Aluno topo = pilha.Peek();
+                            if (topo != null) Console.WriteLine($"- Topo -\n{topo.GetAluno()}");
+
+                            Aluno removido = pilha.Pop();
+                            if (removido != null) ($"- Removido -\n{removido.GetAluno()}");
+
+                            pilha.Show();
+                            Console.WriteLine($"Tamanho da pilha: {pilha.Size()}");
+
+                            pilha.Clear();
+                            Console.WriteLine("\n✓ Fim do programa.");
+                        }
                     }
-                }</div>
-                
-                <div class="code-block" data-title="📦 Pilha.cs">
-                namespace ExemploPilha;
-
-                class Pilha&lt;T&gt;
-                {
-                    private Aluno[] elementos;
-                    private int topo;
-                    private const int CAPACIDADE_PADRAO = 100;
-                    public Pilha(int capacidade = CAPACIDADE_PADRAO){...}
-                    public int Size(){...}
-                    public bool IsEmpty(){...}
-                    private bool IsNotEmpty(){...}
-                    public void Push(Aluno item){...}
-                    public Aluno Pop(){...}
-                    public Aluno Peek(){...}
-                    public void Show(){...}
-                    public void Clear(){...}
-                }</div>
-                
-                <div class="code-block" data-title="▶️ Program.cs">
-                namespace ExemploPilha;
-
-                class Program {
-                    static void Main(string[] args) {
-                        Pilha<Aluno> pilha = new Pilha<Aluno>();
-                        Aluno[] alunos = { new Aluno { Matricula = 2, Nome = "André", N1 = 9.5, N2 = 7.8, N3 = 8.5 } };
-
-                        pilha.Push(alunos[0]);
-                        pilha.Show();
-
-                        Aluno topo = pilha.Peek();
-                        if (topo != null) Console.WriteLine($"- Topo -\n{topo.GetAluno()}");
-
-                        Aluno removido = pilha.Pop();
-                        if (removido != null) ($"- Removido -\n{removido.GetAluno()}");
-
-                        pilha.Show();
-                        Console.WriteLine($"Tamanho da pilha: {pilha.Size()}");
-
-                        pilha.Clear();
-                        Console.WriteLine("\n✓ Fim do programa.");
-                    }
-                }
+                    </div>
                 </div>
             </div>
+            <div class="slide-number">12 / 16</div>
         </div>
-        <div class="slide-number">12 / 16</div>
-    </div>
 
-    <!-- SLIDE 13: GitHub -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>🐙 Demonstração do GitHub</h2>
-            <ul>
-                <li>📦 Repositório público da equipe</li>
-                <li>📁 Estrutura organizada por pastas:</li>
-            </ul>
-            <div class="code-block">
-                ├── 1 - configuracao-ambiente/
-                ├── 2 - sintaxe-basica/
-                ├── 3 - exemplo-basico-hello-world/
-                ├── 4 - exemplo-implementacao-pilha/
-                └── Descricao.md
-            </div>
-            <div style="margin-top: 1.5rem; padding: 1rem; background: #1f2a3e; border-radius: 16px; text-align: center;">
-                <p class="repo-link">🔗 <strong>Link do repositório:</strong> <a href="https://github.com/CaboFernando/AS63B-Estrutura-De-Dados/tree/main/Atividades/AV2-Estrutura-Dados-C%23" target="_blank">Estrutura Dados C#</a></p>
-            </div>
-        </div>
-        <div class="slide-number">13 / 16</div>
-    </div>
-
-    <!-- SLIDE 14: CRUD com pilha (baseado no código real) -->
-    <div class="slide">
-        <div class="slide-content">
-            <h2>🔄 CRUD com Pilha (nosso projeto)</h2>
-            <ul>
-                <li><strong>C</strong>reate → <code>Push(Aluno)</code> → insere no topo (verifica pilha cheia)</li>
-                <li><strong>R</strong>ead → <code>Peek()</code> (topo) e <code>Show()</code> (exibe todos do topo à base)</li>
-                <li><strong>U</strong>pdate → ❌ Não há método direto. É necessário <code>Pop()</code> + modificar + <code>Push()</code></li>
-                <li><strong>D</strong>elete → <code>Pop()</code> (remove do topo) e <code>Clear()</code> (remove todos)</li>
-            </ul>
-            <div style="margin-top: 20px;">
-                <span class="badge">⚠️ Limitação da pilha</span>
-                <span class="badge">Não permite acesso ao meio</span>
-                <span class="badge">Update exige desempilhar/reempilhar</span>
-                <span class="badge">Capacidade máxima fixa (100)</span>
-            </div>
-            <p style="margin-top: 16px;">📌 <strong>Diferencial:</strong> O código inclui <code>Show()</code> para percorrer toda a pilha e <code>Clear()</code> para limpeza total.</p>
-        </div>
-        <div class="slide-number">14 / 16</div>
-    </div>
-
-    <!-- SLIDE 15: Curiosidade - Onde o C# é mais usado -->
-    <div class="slide">
-        <div class="slide-content" style="text-align: center;">
-            <h2>🔍 Onde o C# é mais usado?</h2>
-            <div style="margin-top: 1.5rem;">
-                <div class="team-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div class="team-card">🎮 <strong>Desenvolvimento de Jogos</strong><br>Unity (70%+ dos jogos mobile)</div>
-                    <div class="team-card">🏢 <strong>Sistemas Empresariais</strong><br>.NET, e-commerces, ERPs</div>
-                    <div class="team-card">🌐 <strong>Aplicações Web</strong><br>ASP.NET Core, Blazor, APIs REST</div>
-                    <div class="team-card">📱 <strong>Aplicativos Mobile</strong><br>.NET MAUI, Xamarin (iOS/Android)</div>
-                    <div class="team-card">⚙️ <strong>Back-end de alta escala</strong><br>Stack Overflow, Microsoft, Alibaba</div>
-                    <div class="team-card">🤖 <strong>Inteligência Artificial</strong><br>ML.NET, integração com TensorFlow</div>
+        <!-- SLIDE 13: GitHub -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🐙 Demonstração do GitHub</h2>
+                <ul>
+                    <li>📦 Repositório público da equipe</li>
+                    <li>📁 Estrutura organizada por pastas:</li>
+                </ul>
+                <div class="code-block">
+                    ├── 1 - configuracao-ambiente/
+                    ├── 2 - sintaxe-basica/
+                    ├── 3 - exemplo-basico-hello-world/
+                    ├── 4 - exemplo-implementacao-pilha/
+                    └── Descricao.md
                 </div>
-                <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,180,70,0.15); border-radius: 20px;">
-                    <p style="font-size: clamp(0.85rem, 4vw, 1rem);">
-                        📌 <strong>Curiosidade:</strong> O C# deixou de ser "só Windows" e hoje roda no Linux, macOS, navegadores (WebAssembly) e até dispositivos IoT. 
-                        É mantido pela comunidade .NET Foundation e utilizado por gigantes como Stack Overflow, Microsoft Teams e sistemas financeiros globais!
+                <div style="margin-top: 1.5rem; padding: 1rem; background: #1f2a3e; border-radius: 16px; text-align: center;">
+                    <p class="repo-link">🔗 <strong>Link do repositório:</strong> <a href="https://github.com/CaboFernando/AS63B-Estrutura-De-Dados/tree/main/Atividades/AV2-Estrutura-Dados-C%23" target="_blank">Estrutura Dados C#</a></p>
+                </div>
+            </div>
+            <div class="slide-number">13 / 16</div>
+        </div>
+
+        <!-- SLIDE 14: CRUD com pilha -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔄 CRUD com Pilha (nosso projeto)</h2>
+                <ul>
+                    <li><strong>C</strong>reate → <code>Push(Aluno)</code> → insere no topo (verifica pilha cheia)</li>
+                    <li><strong>R</strong>ead → <code>Peek()</code> (topo) e <code>Show()</code> (exibe todos do topo à base)</li>
+                    <li><strong>U</strong>pdate → ❌ Não há método direto. É necessário <code>Pop()</code> + modificar + <code>Push()</code></li>
+                    <li><strong>D</strong>elete → <code>Pop()</code> (remove do topo) e <code>Clear()</code> (remove todos)</li>
+                </ul>
+                <div style="margin-top: 20px;">
+                    <span class="badge">⚠️ Limitação da pilha</span>
+                    <span class="badge">Não permite acesso ao meio</span>
+                    <span class="badge">Update exige desempilhar/reempilhar</span>
+                    <span class="badge">Capacidade máxima fixa (100)</span>
+                </div>
+                <p style="margin-top: 16px;">📌 <strong>Diferencial:</strong> O código inclui <code>Show()</code> para percorrer toda a pilha e <code>Clear()</code> para limpeza total.</p>
+            </div>
+            <div class="slide-number">14 / 16</div>
+        </div>
+
+        <!-- SLIDE 15: Curiosidade - Onde o C# é mais usado -->
+        <div class="slide">
+            <div class="slide-content" style="text-align: center;">
+                <h2>🔍 Onde o C# é mais usado?</h2>
+                <div style="margin-top: 1.5rem;">
+                    <div class="team-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                        <div class="team-card">🎮 <strong>Desenvolvimento de Jogos</strong><br>Unity (70%+ dos jogos mobile)</div>
+                        <div class="team-card">🏢 <strong>Sistemas Empresariais</strong><br>.NET, e-commerces, ERPs</div>
+                        <div class="team-card">🌐 <strong>Aplicações Web</strong><br>ASP.NET Core, Blazor, APIs REST</div>
+                        <div class="team-card">📱 <strong>Aplicativos Mobile</strong><br>.NET MAUI, Xamarin (iOS/Android)</div>
+                        <div class="team-card">⚙️ <strong>Back-end de alta escala</strong><br>Stack Overflow, Microsoft, Alibaba</div>
+                        <div class="team-card">🤖 <strong>Inteligência Artificial</strong><br>ML.NET, integração com TensorFlow</div>
+                    </div>
+                    <div style="margin-top: 2rem; padding: 1rem; background: rgba(255,180,70,0.15); border-radius: 20px;">
+                        <p style="font-size: clamp(0.85rem, 4vw, 1rem);">
+                            📌 <strong>Curiosidade:</strong> O C# deixou de ser "só Windows" e hoje roda no Linux, macOS, navegadores (WebAssembly) e até dispositivos IoT. 
+                            É mantido pela comunidade .NET Foundation e utilizado por gigantes como Stack Overflow, Microsoft Teams e sistemas financeiros globais!
+                        </p>
+                    </div>
+                    <p style="margin-top: 1.2rem; font-size: clamp(0.8rem, 3.5vw, 0.95rem);">
+                        💡 <strong>Sabia mais?</strong> O C# foi criado pela Microsoft em 2000 e atualmente é uma das 10 linguagens mais populares do mundo segundo o índice TIOBE.
                     </p>
                 </div>
-                <p style="margin-top: 1.2rem; font-size: clamp(0.8rem, 3.5vw, 0.95rem);">
-                    💡 <strong>Sabia mais?</strong> O C# foi criado pela Microsoft em 2000 e atualmente é uma das 10 linguagens mais populares do mundo segundo o índice TIOBE.
-                </p>
             </div>
+            <div class="slide-number">15 / 16</div>
         </div>
-        <div class="slide-number">15 / 16</div>
+
+        <!-- SLIDE 16: Considerações finais -->
+        <div class="slide">
+            <div class="slide-content" style="text-align: center;">
+                <h2>🎯 Considerações finais</h2>
+                <ul style="text-align: left; display: inline-block; width: auto;">
+                    <li>✔️ C# é moderno, tipado e multiplataforma</li>
+                    <li>✔️ Pilhas são simples e extremamente úteis</li>
+                    <li>✔️ LIFO: <strong>último que entra, primeiro que sai</strong></li>
+                    <li>✔️ Aprendizado prático com CRUD</li>
+                </ul>
+                <div style="margin-top: 2.5rem;">
+                    <p style="font-size: clamp(1.2rem, 5vw, 1.8rem);">🙋‍♂️ Dúvidas?</p>
+                    <p style="font-size: clamp(0.9rem, 4vw, 1.2rem); margin-top: 0.8rem;">"O último a entrar é o primeiro a sair – essa é a alma da pilha."</p>
+                </div>
+            </div>
+            <div class="slide-number">16 / 16</div>
+        </div>
     </div>
 
-    <!-- SLIDE 16: Considerações finais -->
-    <div class="slide">
-        <div class="slide-content" style="text-align: center;">
-            <h2>🎯 Considerações finais</h2>
-            <ul style="text-align: left; display: inline-block; width: auto;">
-                <li>✔️ C# é moderno, tipado e multiplataforma</li>
-                <li>✔️ Pilhas são simples e extremamente úteis</li>
-                <li>✔️ LIFO: <strong>último que entra, primeiro que sai</strong></li>
-                <li>✔️ Aprendizado prático com CRUD</li>
-            </ul>
-            <div style="margin-top: 2.5rem;">
-                <p style="font-size: clamp(1.2rem, 5vw, 1.8rem);">🙋‍♂️ Dúvidas?</p>
-                <p style="font-size: clamp(0.9rem, 4vw, 1.2rem); margin-top: 0.8rem;">"O último a entrar é o primeiro a sair – essa é a alma da pilha."</p>
-            </div>
-        </div>
-        <div class="slide-number">16 / 16</div>
+    <!-- Botões de navegação para mobile e desktop -->
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevSlideBtn" aria-label="Slide anterior">◀ Anterior</button>
+        <button class="nav-btn" id="nextSlideBtn" aria-label="Próximo slide">Próximo ▶</button>
     </div>
-</div>
+    <div class="progress-dots" id="progressDots"></div>
 
-<!-- Botões de navegação para mobile e desktop -->
-<div class="nav-controls">
-    <button class="nav-btn" id="prevSlideBtn" aria-label="Slide anterior">◀ Anterior</button>
-    <button class="nav-btn" id="nextSlideBtn" aria-label="Próximo slide">Próximo ▶</button>
-</div>
-<div class="progress-dots" id="progressDots"></div>
+        <script>
+            (function() {
+                const slides = document.querySelectorAll('.slide');
+                let currentIndex = 0;
+                const totalSlides = slides.length;
 
-<script>
-    (function() {
-        const slides = document.querySelectorAll('.slide');
-        let currentIndex = 0;
-        const totalSlides = slides.length;
-
-        function updateSlideVisibility() {
-            slides.forEach((slide, idx) => {
-                if (idx === currentIndex) {
-                    slide.style.display = 'flex';
-                } else {
-                    slide.style.display = 'none';
+                function updateSlideVisibility() {
+                    slides.forEach((slide, idx) => {
+                        if (idx === currentIndex) {
+                            slide.style.display = 'flex';
+                        } else {
+                            slide.style.display = 'none';
+                        }
+                    });
+                    updateDots();
                 }
-            });
-            updateDots();
-        }
 
-        function updateDots() {
-            const dotsContainer = document.getElementById('progressDots');
-            if (!dotsContainer) return;
-            dotsContainer.innerHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                const dot = document.createElement('div');
-                dot.classList.add('dot');
-                if (i === currentIndex) dot.classList.add('active');
-                dotsContainer.appendChild(dot);
-            }
-        }
+                function updateDots() {
+                    const dotsContainer = document.getElementById('progressDots');
+                    if (!dotsContainer) return;
+                    dotsContainer.innerHTML = '';
+                    for (let i = 0; i < totalSlides; i++) {
+                        const dot = document.createElement('div');
+                        dot.classList.add('dot');
+                        if (i === currentIndex) dot.classList.add('active');
+                        dotsContainer.appendChild(dot);
+                    }
+                }
 
-        function nextSlide() {
-            if (currentIndex < totalSlides - 1) {
-                currentIndex++;
-                updateSlideVisibility();
-            }
-        }
+                function nextSlide() {
+                    if (currentIndex < totalSlides - 1) {
+                        currentIndex++;
+                        updateSlideVisibility();
+                    }
+                }
 
-        function prevSlide() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateSlideVisibility();
-            }
-        }
+                function prevSlide() {
+                    if (currentIndex > 0) {
+                        currentIndex--;
+                        updateSlideVisibility();
+                    }
+                }
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                nextSlide();
-                e.preventDefault();
-            } else if (e.key === 'ArrowLeft') {
-                prevSlide();
-                e.preventDefault();
-            }
-        });
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') {
+                        nextSlide();
+                        e.preventDefault();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                        e.preventDefault();
+                    }
+                });
 
-        const prevBtn = document.getElementById('prevSlideBtn');
-        const nextBtn = document.getElementById('nextSlideBtn');
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+                const prevBtn = document.getElementById('prevSlideBtn');
+                const nextBtn = document.getElementById('nextSlideBtn');
+                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-        let touchStartX = 0;
-        let touchEndX = 0;
-        document.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        document.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchEndX < touchStartX - 50) nextSlide();
-            if (touchEndX > touchStartX + 50) prevSlide();
-        });
+                let touchStartX = 0;
+                let touchEndX = 0;
+                document.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+                document.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    if (touchEndX < touchStartX - 50) nextSlide();
+                    if (touchEndX > touchStartX + 50) prevSlide();
+                });
 
-        slides.forEach((slide, idx) => {
-            if (idx !== 0) slide.style.display = 'none';
-            else slide.style.display = 'flex';
-        });
-        updateDots();
+                slides.forEach((slide, idx) => {
+                    if (idx !== 0) slide.style.display = 'none';
+                    else slide.style.display = 'flex';
+                });
+                updateDots();
 
-        const stylePrint = document.createElement('style');
-        stylePrint.textContent = `@media print { .nav-controls, .progress-dots { display: none; } .slide { display: flex !important; page-break-after: always; break-inside: avoid; } }`;
-        document.head.appendChild(stylePrint);
-    })();
-</script>
-</body>
+                const stylePrint = document.createElement('style');
+                stylePrint.textContent = `@media print { .nav-controls, .progress-dots { display: none; } .slide { display: flex !important; page-break-after: always; break-inside: avoid; } }`;
+                document.head.appendChild(stylePrint);
+            })();
+        </script>
+    </body>
 </html>
