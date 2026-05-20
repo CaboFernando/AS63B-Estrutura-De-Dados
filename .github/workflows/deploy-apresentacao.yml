@@ -1,11 +1,15 @@
-name: Deploy Apresentacao.html para GitHub Pages
+name: Deploy Apresentacao HTML
 
 on:
   push:
-    branches: ["main"]
-    paths:
-      - "Atividades/AV2-Estrutura-Dados-C#/6 - apresentacao/Apresentacao.html"
+    branches:
+      - main
   workflow_dispatch:
+    inputs:
+      source_file:
+        description: "Caminho do HTML a publicar"
+        required: false
+        default: "Atividades/AV2-Estrutura-Dados-C#/6 - apresentacao/Apresentacao.html"
 
 permissions:
   contents: read
@@ -13,8 +17,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: pages-apresentacao
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -29,23 +33,27 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Preparar arquivos para publicação
+      - name: Prepare site files
         run: |
-          # Criar diretório de publicação
-          mkdir -p public
-          
-          # Copiar APENAS o arquivo da apresentação
-          cp "Atividades/AV2-Estrutura-Dados-C#/6 - apresentacao/Apresentacao.html" public/Apresentacao.html
-          
-          # Criar um README opcional na raiz do site
-          echo "# Apresentação - Estrutura de Dados em C#" > public/README.md
-          echo "Acesse a apresentação clicando [aqui](https://cabofernando.github.io/AS63B-Estrutura-De-Dados/)" >> public/README.md
+          mkdir -p _site
+          SOURCE_FILE="${{ github.event.inputs.source_file }}"
+          if [ -z "$SOURCE_FILE" ]; then
+            SOURCE_FILE="Atividades/AV2-Estrutura-Dados-C#/6 - apresentacao/Apresentacao.html"
+          fi
+          if [ ! -f "$SOURCE_FILE" ]; then
+            echo "Erro: arquivo não encontrado no caminho informado: $SOURCE_FILE"
+            exit 1
+          fi
+          cp "$SOURCE_FILE" "_site/index.html"
+          cp "$SOURCE_FILE" "_site/Apresentacao.html"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './public'
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+        
