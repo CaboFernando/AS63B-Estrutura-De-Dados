@@ -566,22 +566,27 @@
         <div class="slide-number">11 / 16</div>
     </div>
 
-    <!-- SLIDE 12: Implementação -->
+    <!-- SLIDE 12: Implementação da Pilha -->
     <div class="slide">
         <div class="slide-content">
             <h2>💻 Implementação da Pilha em C#</h2>
             <ul>
                 <li>📁 Pasta: <code>4 - exemplo-implementacao-pilha/</code></li>
-                <li>📄 Arquivos: Aluno.cs, Pilha.cs, Program.cs (CRUD)</li>
+                <li>📄 Arquivos: <strong>Aluno.cs</strong>, <strong>Pilha.cs</strong>, <strong>Program.cs</strong></li>
+                <li>🏷️ Classe <strong>Aluno</strong> → armazena matrícula, nome e 3 notas</li>
+                <li>📦 Classe <strong>Pilha&lt;T&gt;</strong> → genérica, implementa array fixo com capacidade padrão = 100</li>
             </ul>
             <div class="code-block">
-                public class Pilha&lt;T&gt;
+                // Pilha.cs (trecho)
+                class Pilha&lt;T&gt;
                 {
-                &nbsp;&nbsp;&nbsp;&nbsp;private T[] elementos;
-                &nbsp;&nbsp;&nbsp;&nbsp;private int topo;
-                &nbsp;&nbsp;&nbsp;&nbsp;public void Push(T item) { ... }
-                &nbsp;&nbsp;&nbsp;&nbsp;public T Pop() { ... }
-                &nbsp;&nbsp;&nbsp;&nbsp;public T Peek() { ... }
+                    private Aluno[] elementos;
+                    private int topo = -1;
+                    public void Push(Aluno item) { ... }
+                    public Aluno Pop() { ... }
+                    public Aluno Peek() { ... }
+                    public void Show() { ... }
+                    public void Clear() { ... }
                 }
             </div>
         </div>
@@ -610,21 +615,23 @@
         <div class="slide-number">13 / 16</div>
     </div>
 
-    <!-- SLIDE 14: CRUD com pilha -->
+    <!-- SLIDE 14: CRUD com pilha (baseado no código real) -->
     <div class="slide">
         <div class="slide-content">
             <h2>🔄 CRUD com Pilha (nosso projeto)</h2>
             <ul>
-                <li><strong>C</strong>reate → Push (empilhar novo aluno)</li>
-                <li><strong>R</strong>ead → Peek (ver topo) / Percorrer toda pilha</li>
-                <li><strong>U</strong>pdate → Só é possível após Pop (remove e insere modificado)</li>
-                <li><strong>D</strong>elete → Pop (remove do topo)</li>
+                <li><strong>C</strong>reate → <code>Push(Aluno)</code> → insere no topo (verifica pilha cheia)</li>
+                <li><strong>R</strong>ead → <code>Peek()</code> (topo) e <code>Show()</code> (exibe todos do topo à base)</li>
+                <li><strong>U</strong>pdate → ❌ Não há método direto. É necessário <code>Pop()</code> + modificar + <code>Push()</code></li>
+                <li><strong>D</strong>elete → <code>Pop()</code> (remove do topo) e <code>Clear()</code> (remove todos)</li>
             </ul>
             <div style="margin-top: 20px;">
                 <span class="badge">⚠️ Limitação da pilha</span>
                 <span class="badge">Não permite acesso ao meio</span>
                 <span class="badge">Update exige desempilhar/reempilhar</span>
+                <span class="badge">Capacidade máxima fixa (100)</span>
             </div>
+            <p style="margin-top: 16px;">📌 <strong>Diferencial:</strong> O código inclui <code>Show()</code> para percorrer toda a pilha e <code>Clear()</code> para limpeza total.</p>
         </div>
         <div class="slide-number">14 / 16</div>
     </div>
