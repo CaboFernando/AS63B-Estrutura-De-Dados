@@ -12,7 +12,7 @@ class Aluno
 	public double N2 { get; set; }
 	public double N3 { get; set; }
 
-	public override string ToString()
+	public string Get()
 	{
 		return $"Matrícula: {Matricula}\nNome: {Nome}\nNotas: {N1} {N2} {N3}";
 	}

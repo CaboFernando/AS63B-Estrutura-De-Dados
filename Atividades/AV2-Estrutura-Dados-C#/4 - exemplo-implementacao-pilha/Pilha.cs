@@ -7,14 +7,14 @@ namespace ExemploPilha;
 // com operações de inserção, remoção, leitura e edição
 class Pilha<T>
 {
-    private T[] elementos;      // Array para armazenar os elementos
+    private Aluno[] elementos;      // Array para armazenar os elementos
     private int topo;            // Índice do topo da pilha
     private const int CAPACIDADE_PADRAO = 100;  // Capacidade inicial
 
     // Construtor com capacidade opcional
     public Pilha(int capacidade = CAPACIDADE_PADRAO)
     {
-        elementos = new T[capacidade];
+        elementos = new Aluno[capacidade];
         topo = -1;  // Pilha vazia
     }
 
@@ -37,7 +37,7 @@ class Pilha<T>
     }
 
     // Insere um elemento no topo da pilha
-    public void Push(T item)
+    public void Push(Aluno item)
     {
         if (IsNotEmpty())
         {
@@ -50,7 +50,7 @@ class Pilha<T>
     }
 
     // Remove e retorna o elemento do topo
-    public T Pop()
+    public Aluno Pop()
     {
         if (IsEmpty())
         {
@@ -58,14 +58,14 @@ class Pilha<T>
             return default!;
         }
 
-        T item = elementos[topo];
+        Aluno item = elementos[topo];
         elementos[topo--] = default!;  // Libera referência para o GC
         Console.WriteLine($"✓ Elemento removido. Tamanho: {Tamanho()}");
         return item;
     }
 
     // Retorna o elemento do topo sem remover
-    public T Peek()
+    public Aluno Peek()
     {
         if (IsEmpty())
         {
@@ -88,7 +88,7 @@ class Pilha<T>
         Console.WriteLine("\n--- Conteúdo da Pilha (topo → base) ---");
         for (int i = topo; i >= 0; i--)
         {
-            Console.WriteLine(elementos[i]);
+            Console.WriteLine(elementos[i].Get());
             Console.WriteLine("---");
         }
     }
