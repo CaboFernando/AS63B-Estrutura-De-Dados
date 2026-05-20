@@ -554,6 +554,21 @@ Ela funciona com a regra:
 
 **último que entra, primeiro que sai**.
 
+## 🔍 Curiosidade: Onde o C# é mais usado?
+
+Apesar de muitos associarem o C# apenas ao ambiente Windows, hoje ele está presente em diversas áreas:
+
+- **🎮 Desenvolvimento de Jogos** – Mais de 70% dos jogos mobile são feitos com a引擎 Unity, que usa C# como linguagem principal (ex.: Pokémon GO, Cuphead, Among Us).
+- **🏢 Sistemas Empresariais** – Grandes ERPs, sistemas bancários e e-commerces utilizam .NET e C# por sua confiabilidade e performance.
+- **🌐 Aplicações Web** – Com ASP.NET Core, é possível criar desde APIs REST até aplicações completas com Blazor (C# rodando no navegador via WebAssembly).
+- **📱 Aplicativos Mobile** – Usando .NET MAUI ou Xamarin, uma única base de código gera apps para Android, iOS, macOS e Windows.
+- **⚙️ Back-end de Alta Escala** – Empresas como Stack Overflow, Microsoft, Alibaba Travels e GoDaddy utilizam C# em seus serviços de alto tráfego.
+- **🤖 Inteligência Artificial e Dados** – Com ML.NET, é possível treinar e consumir modelos de machine learning diretamente em C#.
+
+> 📌 O C# evoluiu muito: hoje é open source, multiplataforma e mantido pela comunidade .NET Foundation. Você pode rodar seus programas no Linux, macOS, Windows, dentro de containers Docker e até em dispositivos IoT com Raspberry Pi.
+
+💡 **Sabia mais?** O C# foi criado pela Microsoft em 2000 e atualmente é uma das 10 linguagens mais populares do mundo segundo o índice TIOBE.
+
 ## 15. Encerramento
 
 Depois de entender listas estáticas e dinâmicas, a pilha fica fácil de visualizar:
