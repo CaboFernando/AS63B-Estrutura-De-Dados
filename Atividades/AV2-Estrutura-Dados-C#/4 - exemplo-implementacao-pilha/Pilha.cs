@@ -59,7 +59,7 @@ class Pilha<T>
         }
 
         Aluno item = elementos[topo];
-        elementos[topo--] = default!;  // Libera referência para o GC
+        elementos[topo--] = default!;  // Libera referência para o GC equivalente ao free() do C++ <-- COMENTAR NA APRESNTAÇÃO
         Console.WriteLine($"✓ Elemento removido. Tamanho: {Size()}");
         return item;
     }
@@ -96,7 +96,7 @@ class Pilha<T>
     // Limpa toda a pilha
     public void Clear()
     {
-        // Limpa as referências para o GC
+        // Limpa as referências para o GC equivalente ao free() do C++ <-- COMENTAR NA APRESNTAÇÃO
         for (int i = 0; i <= topo; i++)
         {
             elementos[i] = default!;
