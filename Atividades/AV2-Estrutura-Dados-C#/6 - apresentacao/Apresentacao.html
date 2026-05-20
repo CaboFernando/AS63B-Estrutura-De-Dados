@@ -105,7 +105,7 @@
             margin: 0.7rem 0;
         }
 
-        /* Código responsivo com scroll horizontal */
+        /* Código responsivo com scroll horizontal - VERSÃO CORRIGIDA */
         .code-block {
             background: rgba(0, 0, 0, 0.85);
             color: #b0ffb0;
@@ -114,16 +114,30 @@
             font-family: 'Consolas', 'Courier New', monospace;
             font-size: clamp(0.75rem, 3.5vw, 1rem);
             overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
+            overflow-y: hidden;
+            white-space: pre;  /* Mude de pre-wrap para pre */
+            word-break: normal;  /* Mude de break-word para normal */
+            word-wrap: normal;    /* Adicione esta linha */
             margin: 1.2rem 0;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+        }
+
+        /* Para telas muito pequenas, garantir que o scroll apareça */
+        @media (max-width: 768px) {
+            .code-block {
+                font-size: 0.75rem;
+                padding: 0.75rem;
+            }
         }
 
         .slide:nth-child(even) .code-block {
             background: #1f2a3e;
             color: #9bff9b;
             border: 1px solid #4a6172;
+            white-space: pre;        /* Adicione */
+            word-break: normal;      /* Adicione */
+            word-wrap: normal;       /* Adicione */
         }
 
         /* Tabelas responsivas - scroll horizontal se necessário */
