@@ -25,13 +25,13 @@ class Pilha<T>
     }
 
     // Verifica se a pilha está vazia
-    public bool EstaVazia()
+    public bool IsEmpty()
     {
         return topo == -1;
     }
 
     // Verifica se a pilha está cheia
-    private bool EstaCheia()
+    private bool IsNotEmpty()
     {
         return topo == elementos.Length - 1;
     }
@@ -39,7 +39,7 @@ class Pilha<T>
     // Insere um elemento no topo da pilha
     public void Push(T item)
     {
-        if (EstaCheia())
+        if (IsNotEmpty())
         {
             Console.WriteLine("✗ Erro: pilha cheia! Capacidade máxima atingida.");
             return;
@@ -52,7 +52,7 @@ class Pilha<T>
     // Remove e retorna o elemento do topo
     public T Pop()
     {
-        if (EstaVazia())
+        if (IsEmpty())
         {
             Console.WriteLine("✗ Erro: pilha vazia!");
             return default!;
@@ -67,7 +67,7 @@ class Pilha<T>
     // Retorna o elemento do topo sem remover
     public T Peek()
     {
-        if (EstaVazia())
+        if (IsEmpty())
         {
             Console.WriteLine("✗ Erro: pilha vazia!");
             return default!;
@@ -77,9 +77,9 @@ class Pilha<T>
     }
 
     // Percorre e exibe todos os elementos (do topo para a base)
-    public void Exibir()
+    public void Show()
     {
-        if (EstaVazia())
+        if (IsEmpty())
         {
             Console.WriteLine("Pilha vazia.");
             return;
@@ -94,7 +94,7 @@ class Pilha<T>
     }
 
     // Limpa toda a pilha
-    public void Limpar()
+    public void Clear()
     {
         // Limpa as referências para o GC
         for (int i = 0; i <= topo; i++)

@@ -35,7 +35,7 @@ class Program
 		// =====================
 		Console.WriteLine("\n2. PERCORRIMENTO (Exibir)");
 		Console.WriteLine("==========================");
-		pilha.Exibir();
+		pilha.Show();
 		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
 
         // =====================
@@ -61,21 +61,15 @@ class Program
 		// =====================
 		Console.WriteLine("\n7. ESTADO FINAL");
 		Console.WriteLine("================");
-		pilha.Exibir();
+		pilha.Show();
 		Console.WriteLine($"Tamanho da pilha: {pilha.Tamanho()}");
         
         // =====================
-		// 6. Removendo até esvaziar
+		// 6. Removendo toda a pilha (Clear)
 		// =====================
-		Console.WriteLine("\n8. REMOVENDO ATÉ ESVAZIAR (Pop sucessivos)");
+		Console.WriteLine("\n8. REMOVENDO TODA A PILHA (Clear)");
 		Console.WriteLine("===========================================");
-		while (!pilha.EstaVazia())
-		{
-			Aluno al = pilha.Pop();
-			if (al != null)
-				Console.WriteLine($"Removido: {al.Nome} | Tamanho restante: {pilha.Tamanho()}");
-		}
-
+		pilha.Clear();
 		Console.WriteLine("\n✓ Fim do programa.");
 	}
 }
