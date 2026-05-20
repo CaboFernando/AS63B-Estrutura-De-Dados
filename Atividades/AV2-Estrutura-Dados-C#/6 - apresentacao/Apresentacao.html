@@ -115,29 +115,79 @@
             font-size: clamp(0.75rem, 3.5vw, 1rem);
             overflow-x: auto;
             overflow-y: hidden;
-            white-space: pre;  /* Mude de pre-wrap para pre */
-            word-break: normal;  /* Mude de break-word para normal */
-            word-wrap: normal;    /* Adicione esta linha */
-            margin: 1.2rem 0;
+            white-space: pre;
+            word-break: normal;
+            word-wrap: normal;
+            margin: 0.5rem 0;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            -webkit-overflow-scrolling: touch; /* Scroll suave no iOS */
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* Para telas muito pequenas, garantir que o scroll apareça */
+        /* Layout para blocos de código lado a lado */
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .code-grid .code-block {
+            margin: 0;
+            height: 100%;
+            font-size: 0.7rem;
+            padding: 0.75rem;
+        }
+
+        /* Para telas menores que 900px, reduz o padding */
+        @media (max-width: 900px) {
+            .code-grid {
+                gap: 0.75rem;
+            }
+            .code-grid .code-block {
+                font-size: 0.65rem;
+                padding: 0.6rem;
+            }
+        }
+
+        /* Para telas muito pequenas, empilha verticalmente */
         @media (max-width: 768px) {
+            .code-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .code-grid .code-block {
+                font-size: 0.75rem;
+                padding: 0.75rem;
+            }
             .code-block {
                 font-size: 0.75rem;
                 padding: 0.75rem;
             }
         }
 
+        /* Títulos para cada bloco de código */
+        .code-block[data-title]::before {
+            content: attr(data-title);
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #ffb347;
+            font-size: 0.85rem;
+            padding-bottom: 0.3rem;
+        }
+
         .slide:nth-child(even) .code-block {
             background: #1f2a3e;
             color: #9bff9b;
             border: 1px solid #4a6172;
-            white-space: pre;        /* Adicione */
-            word-break: normal;      /* Adicione */
-            word-wrap: normal;       /* Adicione */
+            white-space: pre;
+            word-break: normal;
+            word-wrap: normal;
+        }
+
+        .slide:nth-child(even) .code-block[data-title]::before {
+            color: #ffb347;
+            border-bottom-color: rgba(255,255,255,0.2);
         }
 
         /* Tabelas responsivas - scroll horizontal se necessário */
@@ -449,10 +499,10 @@
                 
                 class Program
                 {
-                &nbsp;&nbsp;&nbsp;&nbsp;static void Main(string[] args)
-                &nbsp;&nbsp;&nbsp;&nbsp;{
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Olá, C#!");
-                &nbsp;&nbsp;&nbsp;&nbsp;}
+                    static void Main(string[] args)
+                    {
+                        Console.WriteLine("Olá, C#!");
+                    }
                 }
             </div>
             <ul>
@@ -477,9 +527,9 @@
                 idade = int.Parse(Console.ReadLine());
                 
                 if (idade >= 18)
-                &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Maior de idade");
+                    Console.WriteLine("Maior de idade");
                 else
-                &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Menor de idade");
+                    Console.WriteLine("Menor de idade");
             </div>
         </div>
         <div class="slide-number">6 / 16</div>
@@ -580,7 +630,7 @@
         <div class="slide-number">11 / 16</div>
     </div>
 
-    <!-- SLIDE 12: Implementação da Pilha -->
+    <!-- SLIDE 12: Implementação da Pilha - COM BLOCOS LADO A LADO -->
     <div class="slide">
         <div class="slide-content">
             <h2>💻 Implementação da Pilha em C#</h2>
@@ -589,19 +639,71 @@
                 <li>📄 Arquivos: <strong>Aluno.cs</strong>, <strong>Pilha.cs</strong>, <strong>Program.cs</strong></li>
                 <li>🏷️ Classe <strong>Aluno</strong> → armazena matrícula, nome e 3 notas</li>
                 <li>📦 Classe <strong>Pilha&lt;T&gt;</strong> → genérica, implementa array fixo com capacidade padrão = 100</li>
+                <li>▶️ Classe <strong>Program</strong> → classe principal onde fazemos as chamadas dos métodos da pilha</li>
             </ul>
-            <div class="code-block">
-                // Pilha.cs (trecho)
+            
+            <div class="code-grid">
+                <div class="code-block" data-title="📄 Aluno.cs">
+                namespace ExemploPilha;
+
+                class Aluno
+                {
+                    public int Matricula { get; set; }
+                    public string? Nome { get; set; }
+                    public double N1 { get; set; }
+                    public double N2 { get; set; }
+                    public double N3 { get; set; }
+
+                    public string GetAluno()
+                    {
+                        return $"Matrícula: {Matricula}\nNome: {Nome}\nNotas: {N1} {N2} {N3}";
+                    }
+                }</div>
+                
+                <div class="code-block" data-title="📦 Pilha.cs">
+                namespace ExemploPilha;
+
                 class Pilha&lt;T&gt;
                 {
                     private Aluno[] elementos;
-                    private int topo = -1;
-                    public void Push(Aluno item) { ... }
-                    public Aluno Pop() { ... }
-                    public Aluno Peek() { ... }
-                    public void Show() { ... }
-                    public void Clear() { ... }
+                    private int topo;
+                    private const int CAPACIDADE_PADRAO = 100;
+                    public Pilha(int capacidade = CAPACIDADE_PADRAO){...}
+                    public int Size(){...}
+                    public bool IsEmpty(){...}
+                    private bool IsNotEmpty(){...}
+                    public void Push(Aluno item){...}
+                    public Aluno Pop(){...}
+                    public Aluno Peek(){...}
+                    public void Show(){...}
+                    public void Clear(){...}
+                }</div>
+                
+                <div class="code-block" data-title="▶️ Program.cs">
+                namespace ExemploPilha;
+
+                class Program {
+                    static void Main(string[] args) {
+                        Pilha<Aluno> pilha = new Pilha<Aluno>();
+                        Aluno[] alunos = { new Aluno { Matricula = 2, Nome = "André", N1 = 9.5, N2 = 7.8, N3 = 8.5 } };
+
+                        pilha.Push(alunos[0]);
+                        pilha.Show();
+
+                        Aluno topo = pilha.Peek();
+                        if (topo != null) Console.WriteLine($"- Topo -\n{topo.GetAluno()}");
+
+                        Aluno removido = pilha.Pop();
+                        if (removido != null) ($"- Removido -\n{removido.GetAluno()}");
+
+                        pilha.Show();
+                        Console.WriteLine($"Tamanho da pilha: {pilha.Size()}");
+
+                        pilha.Clear();
+                        Console.WriteLine("\n✓ Fim do programa.");
+                    }
                 }
+                </div>
             </div>
         </div>
         <div class="slide-number">12 / 16</div>
