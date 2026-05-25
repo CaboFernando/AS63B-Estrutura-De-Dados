@@ -439,10 +439,10 @@
             <div class="slide-content">
                 <h2>📋 Roteiro da Apresentação</h2>
                 <ul>
+                    <li>✅ Conceito de Pilhas (LIFO)</li>
                     <li>✅ Configuração do ambiente C# (.NET)</li>
                     <li>✅ Sintaxe básica da linguagem</li>
-                    <li>✅ Exemplo Hello World</li>
-                    <li>✅ Conceito de Pilhas (LIFO)</li>
+                    <li>✅ Exemplo Hello World</li>                    
                     <li>✅ Implementação de Pilha em C# (CRUD)</li>
                     <li>✅ Demonstração do projeto no GitHub</li>
                     <li>✅ Curiosidades sobre o C#</li>
@@ -450,6 +450,81 @@
                 </ul>
             </div>
             <div class="slide-number">2 / 16</div>
+        </div>
+
+        <!-- SLIDE 8: Conceito Pilhas LIFO interativo-->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📚 Conceito de Pilhas (LIFO)</h2>
+                <div class="flex-pilha">
+                    <div class="pilha-lista">
+                        <ul>
+                            <li><strong>Pilha</strong> = estrutura onde o <span style="color: #ffb347; font-weight: bold;">último que entra é o primeiro que sai</span></li>
+                            <li>📖 Regra: <strong>LIFO</strong> – Last In, First Out</li>
+                            <li>🥞 Exemplo físico: pilha de pratos, livros</li>
+                        </ul>
+                    </div>
+                    <div class="pilha-visual">
+                        <div class="stack-demo" style="background: #1e2a36;">
+                            <div class="stack-item" style="background: #f39c12; color: #1a1a2e; border: 2px solid #ffd966;">🔝 TOPO → C (último)</div>
+                            <div class="stack-item" style="background: #2980b9; color: white;">B</div>
+                            <div class="stack-item" style="background: #27ae60; color: white;">A (primeiro)</div>
+                            <p style="margin-top: 12px; color: #ddd; font-size: 0.85rem;"> O último a entrar (C) sai primeiro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-number">8 / 16</div>
+        </div>
+
+        <!-- SLIDE 9: onde usamos pilhas? -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🏢 Onde usamos pilhas no dia a dia?</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
+                    <div class="team-card">✅ Botão <strong>"desfazer"</strong> (Ctrl+Z)</div>
+                    <div class="team-card">🌐 <strong>Histórico</strong> de navegação</div>
+                    <div class="team-card">📞 <strong>Chamadas de funções</strong> em programação</div>
+                    <div class="team-card">🧮 <strong>Verificação</strong> de expressões matemáticas</div>
+                    <div class="team-card">⬅️ Voltar etapas em um sistema</div>
+                    <div class="team-card">📱 Navegação entre telas (Back stack)</div>
+                </div>
+            </div>
+            <div class="slide-number">9 / 16</div>
+        </div>
+
+        <!-- SLIDE 10: operações da pilha tabela responsiva -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>⚙️ Operações básicas da pilha</h2>
+                <table>
+                    <thead><tr><th>Operação</th><th>Descrição</th><th>Exemplo</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Push</strong> (empilhar)</td><td>Insere no topo</td><td>push(30) → 30 no topo</td></tr>
+                        <tr><td><strong>Pop</strong> (desempilhar)</td><td>Remove do topo</td><td>pop() → remove 30</td></tr>
+                        <tr><td><strong>Peek / Top</strong></td><td>Mostra o topo sem remover</td><td>peek() → retorna 30</td></tr>
+                        <tr><td><strong>IsEmpty</strong></td><td>Verifica se está vazia</td><td>isEmpty() → true/false</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="slide-number">10 / 16</div>
+        </div>
+
+        <!-- SLIDE 11: Comparação com listas -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📊 Comparação com listas</h2>
+                <table>
+                    <thead><tr><th>Estrutura</th><th>Acesso</th><th>Crescimento</th><th>Flexibilidade</th></tr></thead>
+                    <tbody>
+                        <tr><td>Lista estática</td><td>Por índice (qualquer posição)</td><td>Fixo (vetor)</td><td>Baixa</td></tr>
+                        <tr><td>Lista dinâmica</td><td>Por índice/percurso</td><td>Dinâmico (nós)</td><td>Alta</td></tr>
+                        <tr style="background: rgba(46,204,113,0.15);"><td>Pilha</td><td>Apenas o topo</td><td>Depende da impl.</td><td>Controlada (LIFO)</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 1rem;"><strong>💡 Diferença principal:</strong> Na pilha, <strong style="color:#2ecc71;">SÓ o topo pode ser acessado</strong>!</p>
+            </div>
+            <div class="slide-number">11 / 16</div>
         </div>
 
         <!-- SLIDE 3: Configuração Windows -->
@@ -553,81 +628,6 @@
                 </ul>
             </div>
             <div class="slide-number">7 / 16</div>
-        </div>
-
-        <!-- SLIDE 8: Conceito Pilhas LIFO interativo-->
-        <div class="slide">
-            <div class="slide-content">
-                <h2>📚 Conceito de Pilhas (LIFO)</h2>
-                <div class="flex-pilha">
-                    <div class="pilha-lista">
-                        <ul>
-                            <li><strong>Pilha</strong> = estrutura onde o <span style="color: #ffb347; font-weight: bold;">último que entra é o primeiro que sai</span></li>
-                            <li>📖 Regra: <strong>LIFO</strong> – Last In, First Out</li>
-                            <li>🥞 Exemplo físico: pilha de pratos, livros</li>
-                        </ul>
-                    </div>
-                    <div class="pilha-visual">
-                        <div class="stack-demo" style="background: #1e2a36;">
-                            <div class="stack-item" style="background: #f39c12; color: #1a1a2e; border: 2px solid #ffd966;">🔝 TOPO → C (último)</div>
-                            <div class="stack-item" style="background: #2980b9; color: white;">B</div>
-                            <div class="stack-item" style="background: #27ae60; color: white;">A (primeiro)</div>
-                            <p style="margin-top: 12px; color: #ddd; font-size: 0.85rem;"> O último a entrar (C) sai primeiro</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-number">8 / 16</div>
-        </div>
-
-        <!-- SLIDE 9: onde usamos pilhas? -->
-        <div class="slide">
-            <div class="slide-content">
-                <h2>🏢 Onde usamos pilhas no dia a dia?</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
-                    <div class="team-card">✅ Botão <strong>"desfazer"</strong> (Ctrl+Z)</div>
-                    <div class="team-card">🌐 <strong>Histórico</strong> de navegação</div>
-                    <div class="team-card">📞 <strong>Chamadas de funções</strong> em programação</div>
-                    <div class="team-card">🧮 <strong>Verificação</strong> de expressões matemáticas</div>
-                    <div class="team-card">⬅️ Voltar etapas em um sistema</div>
-                    <div class="team-card">📱 Navegação entre telas (Back stack)</div>
-                </div>
-            </div>
-            <div class="slide-number">9 / 16</div>
-        </div>
-
-        <!-- SLIDE 10: operações da pilha tabela responsiva -->
-        <div class="slide">
-            <div class="slide-content">
-                <h2>⚙️ Operações básicas da pilha</h2>
-                <table>
-                    <thead><tr><th>Operação</th><th>Descrição</th><th>Exemplo</th></tr></thead>
-                    <tbody>
-                        <tr><td><strong>Push</strong> (empilhar)</td><td>Insere no topo</td><td>push(30) → 30 no topo</td></tr>
-                        <tr><td><strong>Pop</strong> (desempilhar)</td><td>Remove do topo</td><td>pop() → remove 30</td></tr>
-                        <tr><td><strong>Peek / Top</strong></td><td>Mostra o topo sem remover</td><td>peek() → retorna 30</td></tr>
-                        <tr><td><strong>IsEmpty</strong></td><td>Verifica se está vazia</td><td>isEmpty() → true/false</td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="slide-number">10 / 16</div>
-        </div>
-
-        <!-- SLIDE 11: Comparação com listas -->
-        <div class="slide">
-            <div class="slide-content">
-                <h2>📊 Comparação com listas</h2>
-                <table>
-                    <thead><tr><th>Estrutura</th><th>Acesso</th><th>Crescimento</th><th>Flexibilidade</th></tr></thead>
-                    <tbody>
-                        <tr><td>Lista estática</td><td>Por índice (qualquer posição)</td><td>Fixo (vetor)</td><td>Baixa</td></tr>
-                        <tr><td>Lista dinâmica</td><td>Por índice/percurso</td><td>Dinâmico (nós)</td><td>Alta</td></tr>
-                        <tr style="background: rgba(46,204,113,0.15);"><td>Pilha</td><td>Apenas o topo</td><td>Depende da impl.</td><td>Controlada (LIFO)</td></tr>
-                    </tbody>
-                </table>
-                <p style="margin-top: 1rem;"><strong>💡 Diferença principal:</strong> Na pilha, <strong style="color:#2ecc71;">SÓ o topo pode ser acessado</strong>!</p>
-            </div>
-            <div class="slide-number">11 / 16</div>
         </div>
 
         <!-- SLIDE 12: Implementação da Pilha -->
