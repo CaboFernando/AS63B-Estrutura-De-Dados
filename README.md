@@ -35,6 +35,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 14   | Aula sobre Git e GitHub & Implementação da AV2 |
 | 15   | Prorrogação e Implementação da AV2 |
 | 16   | Prorrogação e Implementação da AV2 + Pré Apresentação para professor |
+| 17   | Apresentação do grupo para sala |
 
 ---
 
