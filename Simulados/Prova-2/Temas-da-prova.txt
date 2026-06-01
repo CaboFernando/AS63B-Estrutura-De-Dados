@@ -1,0 +1,6 @@
+Temas da prova:
+- Como se define um nó
+- Como se define uma struc
+- Como se define uma lista dinâmica encadeada
+- Complete o código
+- Interpretação de código
