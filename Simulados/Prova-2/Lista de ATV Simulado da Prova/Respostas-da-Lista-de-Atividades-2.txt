@@ -1,0 +1,88 @@
+Respostas da Lista de Atividades 2
+
+ 1) B
+ 2) no = no->prox;
+ 3) V F V F
+ 4) Significa que a lista está vazia então o tamanho dela é 0
+ 5) C
+ 6) 3 elementos
+ 7) Represente o ponteiro para o nó anterior
+ 8) Inserção no final ele simplemente vai percorrer toda a lista e inserior no final. Inserção ordenada, vai inserior ordenando com base em algum parâmetro, no caso com base na matrícula
+ 9) D
+10) Andre (2) -> Ricardo (4) -> Bianca (1) -> nullptr
+11) "menor que"
+12) Para ir liberando a memória de cada nó a medida que vai percorrendo a lista
+13) C
+14) "11"
+15) 
+struct aluno{
+    int matricula;
+    char nome[30];
+};
+
+struct elemento{
+    aluno dados;
+    elemento *prox;
+};
+
+typedef elemento* Lista;
+
+Lista* cria_lista(){
+    Lista* li = new Lista;
+    if(li != nullptr)
+        *li = nullptr;
+    return li;
+}
+
+int insere_lista_final(Lista* li, aluno al){
+    if(li == nullptr)
+        return 0;
+
+    elemento *no = new elemento;
+    if(no == nullptr)
+        return 0;
+
+    no->dados = al;
+    no->prox = nullptr;
+
+    if(*li == nullptr){
+        *li = no;
+    } else {
+        elemento *aux = *li;
+
+        while(aux->prox != nullptr){
+            aux = aux->prox;
+        }
+
+        aux->prox = no;
+    }
+
+    return 1;
+}
+
+void imprime_lista(Lista* li){
+    if(li == nullptr)
+        return;
+
+    elemento* no = *li;
+
+    while(no != nullptr){
+        cout << no->dados.matricula << " - " << no->dados.nome << endl;
+        no = no->prox;
+    }
+}
+
+16) A principal vantagem é a flexibilidade, pois a medida que é necessário adicionar novos itens a lista vai crescendo sem ter um tamahno pré definido.
+17) 
+int busca_matricula(Lista* li, int mat) {
+
+    elemento* no = *li;
+
+    while(no != nullptr){
+        if (p->dados.matricula == mat) return 1;
+        no = no->prox;
+    }
+    return 0;
+}
+
+18) 1 - Sim, seria a melhor escolha | 2 - Sim, pela flexibilidade de não ter um tamanho pré definido | 3 - Impossibilidade de ler um elemento sem percorrer a lista inteira
