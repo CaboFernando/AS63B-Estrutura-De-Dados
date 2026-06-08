@@ -36,6 +36,10 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 15   | Prorrogação e Implementação da AV2 |
 | 16   | Prorrogação e Implementação da AV2 + Pré Apresentação para professor |
 | 17   | Apresentação do grupo para sala |
+| 18   | Apresentações |
+| 19   | Apresentações e Revisão da Prova |
+| 20   | Prova |
+| 21   | Correções da prova + conteúdo extra de soring |
 
 ---
 
