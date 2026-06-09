@@ -39,7 +39,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 18   | Apresentações |
 | 19   | Apresentações e Revisão da Prova |
 | 20   | Prova |
-| 21   | Correções da prova + conteúdo extra de soring |
+| 21   | Correções da prova + conteúdo extra de soring + Início de Árvores |
 
 ---
 
