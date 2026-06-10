@@ -40,6 +40,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 19   | Apresentações e Revisão da Prova |
 | 20   | Prova |
 | 21   | Correções da prova + conteúdo extra de soring + Início de Árvores |
+| 22   | Continuação do conteúdo de Árvores Binárias + Grafos |
 
 ---
 
@@ -48,6 +49,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 * C
 * C++
 * C#
+* HTML
 * Visual Studio Code
 
 ---
