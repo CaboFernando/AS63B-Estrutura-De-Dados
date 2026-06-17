@@ -1,106 +1,115 @@
 #include <iostream>
+
 using namespace std;
 
-//criação do nodo
-struct no
+// Definição do nó da árvore
+struct no 
 {
     int info;
-    string nome;
     no* esq;
     no* dir;
 };
 
-//caveça da lista
+// ArvBin é um ponteiro para NO
 typedef no* ArvBin;
 
-//criação da arvore binária
-ArvBin* cria_ArvBin()
+// Cria uma árvore vazia
+ArvBin* cria_ArvBin() 
 {
     ArvBin* raiz = new ArvBin;
 
-    if(raiz != nullptr)
+    if (raiz != nullptr)
         *raiz = nullptr;
 
     return raiz;
 }
 
-//inserir na arvore binária
-bool insere_ArvBin (ArvBin* raiz, int valor)
+// Libera todos os nós da árvore
+void libera_no(no* no) 
 {
-    if(raiz == nullptr)
-        return false;
-    
-    no* novo = new no;
+    if (no == nullptr)
+        return;
 
+    libera_no(no->esq);
+    libera_no(no->dir);
+
+    delete no;
+}
+
+// Libera a estrutura da árvore
+void libera_ArvBin(ArvBin* raiz) 
+{
+    if (raiz == nullptr)
+        return;
+
+    libera_no(*raiz);  // libera todos os nós
+    delete raiz;       // libera o ponteiro da raiz
+}
+
+// Função auxiliar para inserir nós (apenas para teste)
+bool insere_ArvBin(ArvBin* raiz, int valor) 
+{
+    if (raiz == nullptr)
+        return false;
+
+    no* novo = new no;
     novo->info = valor;
     novo->esq = nullptr;
     novo->dir = nullptr;
 
-    if(*raiz == nullptr)
-        //ponteiro para ponteiro
+    if (*raiz == nullptr) {
         *raiz = novo;
         return true;
-    
+    }
+
     no* atual = *raiz;
 
-    while (true)
-    {
-        if(valor < atual->info)
-        {
-            if(atual->esq == nullptr)
-            {
+    while (true) {
+        if (valor < atual->info) {
+            if (atual->esq == nullptr) {
                 atual->esq = novo;
                 return true;
             }
             atual = atual->esq;
         }
-        else
-        {
-            if(atual->dir == nullptr)
-            {
+        else {
+            if (atual->dir == nullptr) {
                 atual->dir = novo;
                 return true;
             }
             atual = atual->dir;
-        }            
-    }    
+        }
+    }
 }
 
-void emOrdem(no* no)
+// Percurso em ordem (para teste)
+void emOrdem(no* no) 
 {
-    if(no == nullptr)
-    {
-        cout << "Deu ruim!" << endl;
+    if (no == nullptr)
         return;
-    }
 
     emOrdem(no->esq);
-    cout << "Passou pela raiz: " << no->info << endl;
+    cout << no->info << " ";
     emOrdem(no->dir);
 }
 
-int main()
-{
+int main() {
+    // Cria a árvore
     ArvBin* raiz = cria_ArvBin();
 
-    //inserção de alguns nodos
+    // Insere alguns valores
+    insere_ArvBin(raiz, 10);
+    insere_ArvBin(raiz, 5);
+    insere_ArvBin(raiz, 20);
     insere_ArvBin(raiz, 3);
     insere_ArvBin(raiz, 7);
-    insere_ArvBin(raiz, 6);
-    insere_ArvBin(raiz, 15);
-    insere_ArvBin(raiz, 101);
 
-    cout << "Percurso em ordem" << endl;
-
+    cout << "Percurso em ordem: ";
     emOrdem(*raiz);
+    cout << endl;
+
+    // Libera a árvore
+    libera_ArvBin(raiz);
 
     return 0;
 }
-
-/*
-Implementar:
-- outros tipos de percurso
-- menu para o usuário interagir com a aplicação
-- a função de eliminação da árvore
-
-*/
