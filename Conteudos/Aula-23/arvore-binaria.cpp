@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 // Definição do nó da árvore
@@ -113,3 +112,11 @@ int main() {
 
     return 0;
 }
+
+/*
+Implementar:
+    - outros tipos de percurso
+    - menu para o usuário interagir com a aplicação
+        - Inserção e remoção de um nó da árvore
+    - a função de eliminação da árvore -> Pronta
+*/

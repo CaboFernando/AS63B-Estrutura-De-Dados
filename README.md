@@ -41,7 +41,8 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 20   | Prova |
 | 21   | Correções da prova + conteúdo extra de soring + Início de Árvores |
 | 22   | Continuação do conteúdo de Árvores Binárias + Grafos |
-| 23   | Continuação do conteúdo de Árvores Binárias |
+| 23   | Continuação do conteúdo de Árvores Binárias + Implementação do código de árvores binárias |
+| 24   | Árvores AVL (balanceadas) |
 
 ---
 
