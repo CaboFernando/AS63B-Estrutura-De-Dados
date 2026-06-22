@@ -43,6 +43,7 @@ Este repositório tem como objetivo armazenar materiais, atividades e conteúdos
 | 22   | Continuação do conteúdo de Árvores Binárias + Grafos |
 | 23   | Continuação do conteúdo de Árvores Binárias + Implementação do código de árvores binárias |
 | 24   | Árvores AVL (balanceadas) |
+| 25   | Árvore Rubro Negra + AV 3 |
 
 ---
 
