@@ -54,14 +54,14 @@ void libera_ArvBin(ArvBin* raiz)
     delete raiz;       // libera o ponteiro da raiz
 }
 
-// Função auxiliar para inserir nós (apenas para teste)
-bool insere_ArvBin(ArvBin* raiz, aluno valor) 
+// Função auxiliar para inserir nós
+bool insere_ArvBin(ArvBin* raiz, aluno aluno) 
 {
     if (raiz == nullptr)
         return false;
 
     no* novo = new no;
-    novo->info = valor;
+    novo->info = aluno;
     novo->esq = nullptr;
     novo->dir = nullptr;
 
@@ -73,7 +73,7 @@ bool insere_ArvBin(ArvBin* raiz, aluno valor)
     no* atual = *raiz;
 
     while (true) {
-        if (valor.matricula < atual->info.matricula) {
+        if (aluno.nome < atual->info.nome) {
             if (atual->esq == nullptr) {
                 atual->esq = novo;
                 return true;
@@ -90,7 +90,7 @@ bool insere_ArvBin(ArvBin* raiz, aluno valor)
     }
 }
 
-// Percurso em ordem (para teste)
+// Percurso em ordem
 void emOrdem(no* no) 
 {
     if (no == nullptr)

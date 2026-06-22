@@ -13,7 +13,7 @@ int main()
     insere_ArvBin(raiz, Aluno{103, "Michael Brown", "Ciência da Computação"});
     insere_ArvBin(raiz, Aluno{104, "Emily", "Engenharia de Software"});
 
-    cout << "Percurso em ordem: ";
+    cout << "Percurso em ordem: " << endl;
     emOrdem(*raiz);
     cout << endl;
 
