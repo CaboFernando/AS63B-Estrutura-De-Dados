@@ -3,10 +3,12 @@ using namespace std;
 
 struct aluno
 {
-    int numeroMatricula;
+    int matricula;
     string nome;
     string curso;
 };
+
+typedef aluno Aluno;
 
 // Definição do nó da árvore
 struct no 
@@ -71,7 +73,7 @@ bool insere_ArvBin(ArvBin* raiz, aluno valor)
     no* atual = *raiz;
 
     while (true) {
-        if (valor.numeroMatricula < atual->info.numeroMatricula) {
+        if (valor.matricula < atual->info.matricula) {
             if (atual->esq == nullptr) {
                 atual->esq = novo;
                 return true;
@@ -95,6 +97,6 @@ void emOrdem(no* no)
         return;
 
     emOrdem(no->esq);
-    cout << no->info.nome << " - " << no->info.numeroMatricula << " - " << no->info.curso << endl;
+    cout << no->info.nome << " - " << no->info.matricula << " - " << no->info.curso << endl;
     emOrdem(no->dir);
 }
