@@ -100,3 +100,17 @@ void emOrdem(no* no)
     cout << no->info.nome << " - " << no->info.matricula << " - " << no->info.curso << endl;
     emOrdem(no->dir);
 }
+
+no* buscaAlunoPorNome(no* raiz, string nome)
+{
+    if (raiz == nullptr)
+        return nullptr;
+
+    if (nome == raiz->info.nome)
+        return raiz;
+
+    if (nome < raiz->info.nome)
+        return buscaAlunoPorNome(raiz->esq, nome);
+
+    return buscaAlunoPorNome(raiz->dir, nome);
+}
