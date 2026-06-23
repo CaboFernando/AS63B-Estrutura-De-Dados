@@ -13,10 +13,12 @@ int main()
     insere_ArvBin(raiz, Aluno{103, "Michael Brown", "Ciência da Computação"});
     insere_ArvBin(raiz, Aluno{104, "Emily", "Engenharia de Software"});
 
+    // Percorre a árvore em ordem
     cout << "Percurso em ordem: " << endl;
     emOrdem(*raiz);
     cout << endl;
 
+    // Busca aluno por nome
     string alunoBusca = "John Smith";
     buscaAlunoPorNome(*raiz, alunoBusca);
 
