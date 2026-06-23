@@ -17,12 +17,11 @@ int main()
     emOrdem(*raiz);
     cout << endl;
 
-    no* aluno = buscaAlunoPorNome(*raiz, "José");
+    string alunoBusca = "John Smith";
+    buscaAlunoPorNome(*raiz, alunoBusca);
 
-    if(aluno != nullptr)
-        cout << "Aluno encontrado: " << aluno->info.nome << " - " << aluno->info.matricula << " - " << aluno->info.curso << endl;
-    else
-        cout << "Aluno não encontrado :(" << endl;
+    // Exibe as informações da árvore
+    infoArvore(raiz);
 
     // Libera a árvore
     libera_ArvBin(raiz);
