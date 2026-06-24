@@ -35,3 +35,7 @@ int main()
 
     return 0;
 }
+
+// validar o uso dessas libs
+// allegro
+// opecv
