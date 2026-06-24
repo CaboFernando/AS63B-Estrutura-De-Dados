@@ -1,0 +1,30 @@
+Teoria
+
+    - Definição de árvore - tipo especial de grafo
+
+    - Grafo: 
+        nodo/nó, 
+        aresta ou vértice, 
+        "grafo não direcionado, convexo e acíclico"
+
+    - Todos conceitos de árvores: 
+        nível, 
+        pai e irmão, 
+        oque é nó folha (ou terminal), 
+        oque são nós internos, 
+        oque é grau de um nó (tem a ver com número de filhos), 
+        oque é a raiz, 
+        caminho ou percorrimento, 
+        altura, 
+        oque é árvore binária, 
+        oque uma sub arvore, 
+        tipos de arvores, 
+        tipos representação de arvores em array ou em nodos dinamicamente (lista encadeada), estrutura de um nó (filho direita, filho esquerda e info), 
+        tipos de percuso (em ordem, pre ordem, pos ordem)
+
+Pratica
+
+    - Definição de nó
+    - Criação do nó
+    - Liberação do nó
+    - Inserção do nó
