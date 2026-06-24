@@ -1,6 +1,7 @@
 Teoria
 
-    - Definição de árvore - tipo especial de grafo
+    - Definição de árvore:
+        tipo especial de grafo
 
     - Grafo: 
         nodo/nó, 
