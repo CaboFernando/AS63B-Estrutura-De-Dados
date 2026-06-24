@@ -83,19 +83,19 @@ void libera_ArvBin(ArvBin* raiz)
  * @param aluno Dados do aluno a ser inserido
  * @return true se a inserção foi bem sucedida, false caso contrário
  */
-bool insere_ArvBin(ArvBin* raiz, aluno aluno) 
+bool insere_ArvBin(ArvBin* raiz, aluno aluno)
 {
     if (raiz == nullptr)  // Verifica se a árvore existe
         return false;
 
-    // Cria um novo nó para armazenar o aluno
-    no* novo = new no;
-    novo->info = aluno;      // Atribui os dados do aluno
-    novo->esq = nullptr;     // Inicializa filho esquerdo como vazio
-    novo->dir = nullptr;     // Inicializa filho direito como vazio
+    // Árvore vazia
+    if (*raiz == nullptr)
+    {
+        no* novo = new no;
+        novo->info = aluno;      // Atribui os dados do aluno
+        novo->esq = nullptr;     // Inicializa filho esquerdo como vazio
+        novo->dir = nullptr;     // Inicializa filho direito como vazio
 
-    // Caso especial: árvore vazia, insere na raiz
-    if (*raiz == nullptr) {
         *raiz = novo;
         return true;
     }
@@ -104,19 +104,39 @@ bool insere_ArvBin(ArvBin* raiz, aluno aluno)
 
     // Loop para encontrar a posição correta de inserção
     while (true) {
-        // Compara alfabeticamente os nomes
-        if (aluno.nome < atual->info.nome) {
-            // Vai para a subárvore esquerda (nomes menores)
-            if (atual->esq == nullptr) {
-                atual->esq = novo;  // Encontrou posição vazia, insere
+        
+        // Verifica se já existe um aluno com o mesmo nome e matrícula
+        if (aluno.nome == atual->info.nome && aluno.matricula == atual->info.matricula)
+        {
+            cout << "Aluno já cadastrado!\n" << endl;
+            return false;
+        }
+
+        // Navega pela árvore usando o nome como chave
+        if (aluno.nome < atual->info.nome)
+        {
+            if (atual->esq == nullptr)
+            {
+                no* novo = new no;
+                novo->info = aluno;
+                novo->esq = nullptr;
+                novo->dir = nullptr;
+
+                atual->esq = novo;
                 return true;
             }
             atual = atual->esq;  // Continua descendo pela esquerda
         }
-        else {
-            // Vai para a subárvore direita (nomes maiores ou iguais)
-            if (atual->dir == nullptr) {
-                atual->dir = novo;  // Encontrou posição vazia, insere
+        else
+        {
+            if (atual->dir == nullptr)
+            {
+                no* novo = new no;
+                novo->info = aluno;
+                novo->esq = nullptr;
+                novo->dir = nullptr;
+
+                atual->dir = novo;
                 return true;
             }
             atual = atual->dir;  // Continua descendo pela direita
@@ -179,7 +199,7 @@ void buscaAlunoPorNome(no* raiz, string nome)
     // Exibe o resultado da busca
     if(aluno != nullptr)
         cout << "Aluno encontrado: " << aluno->info.nome << " - " 
-             << aluno->info.matricula << " - " << aluno->info.curso << endl;
+             << aluno->info.matricula << " - " << aluno->info.curso << "\n" << endl;
     else
         cout << "Aluno " << nome << " não encontrado :(\n" << endl;
 }
